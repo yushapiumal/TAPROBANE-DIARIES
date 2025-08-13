@@ -322,7 +322,7 @@
         .hamburger-line {
             width: 100%;
             height: 2px;
-            background-color: #374151;
+            background-color:white;
             transition: all 0.3s ease;
             transform-origin: center;
         }
@@ -333,7 +333,7 @@
         }
 
         .hamburger-icon.active .hamburger-line:nth-child(2) {
-            opacity: 0;
+            opacity: 100;
             transform: scaleX(0);
         }
 
@@ -343,7 +343,7 @@
 
         /* Hover effect */
         .hamburger-icon:hover .hamburger-line {
-            background-color: #059669;
+            background-color:rgb(58, 122, 15);
         }
   @keyframes scroll-bidirectional {
             0% { transform: translateX(0); }
@@ -415,28 +415,28 @@
         <div class="hero-slider relative w-full h-full">
             <!-- Slide 1 -->
 
-             <nav class="bg-white shadow-md fixed w-full z-[2] top-0">
+             <nav class="bg-black shadow-md fixed w-full z-[2] top-0">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16 items-center">
       
       <!-- LEFT: Logo + Title -->
       <div class="flex items-center space-x-3">
-        <img class="h-10 w-10 object-cover" src="assets/images/logo.jpeg" alt="Logo" />
-        <h1 class="text-2xl font-bold text-green-800">TAPROBANE DIARIES</h1>
+        <img class="h-12.5 w-12 object-cover" src="assets/images/logo.jpeg" alt="Logo" />
+        <h1 class="text-2xl font-bold text-white">TAPROBANE DIARIES</h1>
       </div>
 
       <!-- CENTER/RIGHT: Navigation Links (hidden on mobile) -->
       <div class="hidden md:flex items-center space-x-4">
-        <a href="#home" class="text-gray-700 hover:text-green-600 smooth-scroll font-medium">Home</a>
-        <a href="#tours" class="text-gray-700 hover:text-green-600 smooth-scroll font-medium">Tours</a>
-        <a href="#destinations" class="text-gray-700 hover:text-green-600 smooth-scroll font-medium">Destinations</a>
-        <a href="#blog" class="text-gray-700 hover:text-green-600 smooth-scroll font-medium">Blog</a>
-        <a href="#contact" class="text-gray-700 hover:text-green-600 smooth-scroll font-medium">Contact</a>
+        <a href="#home" class="text-white hover:text-green-600 smooth-scroll font-medium">Home</a>
+        <a href="#tours" class="text-white hover:text-green-600 smooth-scroll font-medium">Tours</a>
+        <a href="#destinations" class="text-white hover:text-green-600 smooth-scroll font-medium">Destinations</a>
+        <a href="#blog" class="text-white hover:text-green-600 smooth-scroll font-medium">Blog</a>
+        <a href="#contact" class="text-white hover:text-green-600 smooth-scroll font-medium">Contact</a>
       </div>
 
       <!-- Mobile Hamburger Icon -->
       <div class="md:hidden flex items-center">
-        <button id="menu-btn" class="text-gray-700 focus:outline-none p-2">
+        <button id="menu-btn" class="text-white focus:outline-none p-2">
           <div class="hamburger-icon">
             <div class="hamburger-line"></div>
             <div class="hamburger-line"></div>
