@@ -1,0 +1,420 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    /* font-weight: 300; */
+    /* height: 100%; */
+    background: #3563a0;
+    color: #fff;
+    /* font-size: 1rem; */
+    overflow: auto !important;
+    background: -moz-linear-gradient(top, #053777 0%, #00659b 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #053777), color-stop(100%, #00659b));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #053777 0%, #00659b 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #053777 0%, #00659b 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #053777 0%, #00659b 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #053777 0%, #00659b 100%);
+    /* W3C */
+    font-family: "Roboto", sans-serif;
+    background-image: url(https://media.istockphoto.com/id/178414064/photo/blue-spot-lights.webp?b=1&s=170667a&w=0&k=20&c=5aDLTDPiXeocPrNZzafEblW18gvx9rrSVnKKtB9aHRM=);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: black;
+}
+
+.file-area {
+    width: 100%;
+    position: relative;
+}
+
+.file-area input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-area .file-dummy {
+    width: 100%;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px dashed rgba(255, 255, 255, 0.2) !important;
+    text-align: center;
+    transition: background 0.3s ease-in-out;
+}
+
+.file-area .file-dummy .success {
+    display: none;
+}
+
+.file-area:hover .file-dummy {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.file-area input[type="file"]:focus+.file-dummy {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline: -webkit-focus-ring-color auto 5px;
+    background-color: rgba(84, 97, 195, 0.3);
+}
+
+.file-area input[type="file"]:valid+.file-dummy {
+    border-color: rgba(0, 255, 0, 0.4);
+    background-color: rgba(0, 255, 0, 0.3);
+}
+
+.file-area input[type="file"]:valid+.file-dummy .success {
+    display: inline-block;
+}
+
+.file-area input[type="file"]:valid+.file-dummy .default {
+    display: none;
+}
+
+/* ===================== BASIC STYLING ===================== */
+* {
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+}
+
+
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px;
+    /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+h1 {
+    text-align: center;
+    margin: 50px auto;
+    font-weight: 100;
+}
+
+label {
+    font-weight: 500;
+    display: block;
+    margin: 4px 0;
+    text-transform: uppercase;
+    font-size: 13px;
+    overflow: auto;
+}
+
+label span {
+    float: right;
+    text-transform: none;
+    font-weight: 200;
+    line-height: 1em;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.form-controll {
+    display: block;
+    padding: 8px 16px;
+    width: 100%;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-weight: 200;
+}
+
+.form-controll:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.button {
+    padding: 8px 30px;
+    background: #ffc107;
+    color: #053777;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 11px;
+    border: 0;
+    text-shadow: 0 1px 2px #fff;
+    cursor: pointer;
+}
+
+.form-group {
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.back-to-article {
+    color: #ffffff !important;
+    text-transform: uppercase;
+    font-size: 12px;
+    position: absolute;
+    right: 20px;
+    text-decoration: none;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 18px;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.6;
+}
+
+.back-to-article:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+
+.images {
+    width: 20%;
+}
+
+
+/* Float four columns side by side */
+.columnCard {
+    float: left;
+    width: 100%;
+    padding: 10px;
+}
+
+.scrollDiv {
+    height: 40px;
+    width: 200px;
+    overflow-y: scroll;
+}
+
+/* Remove extra left and right margins, due to padding */
+.rowCard {
+    margin: 0 12%;
+}
+
+/* Clear floats after the columns */
+.rowCard:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+    .columnCard {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+/* Style the counter cards */
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    /* height: 3; */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.removeButton {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #f00;
+    color: #f00;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.removeButton:hover {
+    color: #ffffff;
+    background-color: #f00;
+}
+
+/* Style for the "X" inside the button */
+.removeButton::before {
+    content: 'X';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.new-mode {
+    background-color: rgba(206, 231, 255, 0.369);
+}
+
+.edit-mode {
+    background-color: rgba(248, 255, 206, 0.369);
+}
+
+.activateBtn,
+.removeBtn,
+.addSizeRow,
+.deleteBtn,
+.editBtn {
+    font-size: 8px !important;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px;
+    background-color: #806f98 !important;
+    text-transform: uppercase;
+    color: #f8f8f8;
+    cursor: pointer;
+}
+
+.cute-select {
+    font-size: 11px !important;
+    text-transform: uppercase;
+}
+
+#product_create_form{
+    padding-top: 20px;
+}
+
+.removeBtn {
+    background-color: rgb(179, 4, 4) !important;
+}
+
+.btnsmall:hover {
+    background-color: #4b0042 !important;
+}
+
+.section-bar {
+    background-color: azure;
+    padding: 5px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.ctrl-bar {
+    position: absolute; 
+    bottom: 5px;
+}
+
+select.btn-mini {
+    height: auto;
+    line-height: 12px;
+}
+
+/* this is optional (see below) */
+select.btn {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    padding-right: 16px;
+}
+
+select.btn-mini+.caret {
+    margin-left: -20px;
+    margin-top: 9px;
+}
+
+
+.error {
+    color: #ff4a4a;
+}
+
+.myDivHide {
+    display: none;
+}
+
+.nomarginRow {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+/* .detailBox {
+    border: 1px solid #ffffff;
+    box-shadow: 5px 5px 10px#5d5d5d;
+    display: flex;
+    flex-direction: row;
+    font-family: sans-serif;
+    padding-top: 1rem !important;
+    margin-top: 1rem;
+    height: 250px !important;
+    position: relative;
+} */
+
+.detailBoxParagraph {
+    color: black;
+    display: block;
+    font-size: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 2px;
+}
+
+.detailBoxContent span{
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.detailBox a {
+    display: inline-block;
+}
+
+.collapsible {
+    color: white;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    outline: none;
+}
+
+.collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.ck-editor__editable {
+    min-height: 500px;
+    max-height: 500px;
+}
+
+
+
+.error_pane {
+    background: #ffdede;
+    padding: 5px;
+    margin: 0px;
+    border: solid 1px red;
+    margin-bottom: 10px;
+}

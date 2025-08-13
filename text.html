@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TAPROBANE DIARIES</title>
+   <link id="favicon" rel="icon" type="image/jpeg" href="assets/images/logo.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            200: '#bcccdc',
+                            300: '#9fb3c8',
+                            400: '#829ab1',
+                            500: '#627d98',
+                            600: '#486581',
+                            700: '#334e68',
+                            800: '#243b53',
+                            900: '#102a43',
+                        },
+                        gold: {
+                            100: '#fdf4d9',
+                            200: '#fae8b3',
+                            300: '#f7dd8d',
+                            400: '#f5d167',
+                            500: '#f2c641',
+                            600: '#e6b422',
+                            700: '#c99a0e',
+                            800: '#a37f0b',
+                            900: '#7d6508',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #f2c641, #e6b422);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(16, 42, 67, 0.9) 0%, rgba(48, 79, 111, 0.9) 100%);
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #f2c641;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .gallery-image {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        
+        .gold-button {
+            background: linear-gradient(135deg, #f2c641, #e6b422);
+            color: #102a43;
+            font-weight: 600;
+        }
+        
+        .gold-button:hover {
+            background: linear-gradient(135deg, #e6b422, #c99a0e);
+            transform: translateY(-2px);
+        }
+        
+        .navy-section {
+            background-color: #102a43;
+            color: white;
+        }
+
+        /* Mobile Menu Overlay and Animation */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-sidebar {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background: #000000; /* Changed to black background */
+            z-index: 9999;
+            transition: left 0.3s ease;
+            /* box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1); */
+            overflow-y: auto;
+        }
+
+        .mobile-menu-sidebar.active {
+            left: 0;
+        }
+
+        .mobile-menu-content {
+            padding: 20px;
+            background: transparent; /* Make content background transparent */
+        }
+
+        .mobile-menu-item {
+            display: block;
+            padding: 15px;
+            color: white !important; /* Force white text color */
+            text-decoration: none;
+            font-weight: 500;
+                       transition: color 0.3s ease;
+            
+            margin-bottom: 5px;
+            border-radius: 8px;
+        }
+
+        .mobile-menu-item:hover {
+            color: #10b981 !important; /* Green color on hover */
+            background: rgba(255, 255, 255, 0.2); /* Slightly more opaque on hover */
+        }
+
+        .mobile-menu-item i {
+            color: #10b981; /* Make icons green */
+        }
+
+        /* Add a close button */
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+            border: none;
+            font-size: 24px;
+            color: white; /* White color for close button */
+            cursor: pointer;
+            z-index: 10000;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+/* WhatsApp Icon Styles */
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366; /* WhatsApp green */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    z-index: 9999;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    text-decoration: none;
+}
+
+.whatsapp-icon:hover {
+    background: #128c7e; /* Darker green on hover */
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+/* Pulse animation for WhatsApp icon */
+.whatsapp-icon::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid #25d366;
+    border-radius: 50%;
+    opacity: 0;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
+}
+
+        /* Hero Slider Styles */
+        .hero-slider {
+            position: relative;
+        }
+
+        .slide {
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-indicator.active {
+            background-color: #f2c641;
+            transform: scale(1.2);
+        }
+
+        .slide-indicator:hover {
+            background-color: #f2c641;
+            transform: scale(1.1);
+        }
+
+        /* Navigation arrows hover effects */
+        #prevSlide:hover, #nextSlide:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #prevSlide, #nextSlide {
+                display: none;
+            }
+        }
+
+        /* Hamburger Icon Styles */
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            width: 24px;
+            height: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            justify-content: space-between;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 2px;
+            background-color: #374151;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        /* Hamburger animation when active */
+        .hamburger-icon.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger-icon.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger-icon.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Hover effect */
+        .hamburger-icon:hover .hamburger-line {
+            background-color: #059669;
+        }
+
+       
+
+    </style>
+</head>
+
+<body class="font-sans">
+    <!-- Navigation Bar -->
+   
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu Sidebar -->
+    <div id="mobile-menu-sidebar" class="mobile-menu-sidebar">
+        <div class="mobile-menu-content">
+            <div class="mb-5 text-start">
+                <h2 class="text-sm font-bold text-white">TAPROBANE DIARIES</h2>
+            </div>
+            <nav>
+                <a href="#home" class="mobile-menu-item smooth-scroll">
+                    <i class="fas fa-home mr-3"></i>Home
+                </a>
+                <a href="#tours" class="mobile-menu-item smooth-scroll">
+                    <i class="fas fa-map-marked-alt mr-3"></i>Tours
+                </a>
+                <a href="#destinations" class="mobile-menu-item smooth-scroll">
+                    <i class="fas fa-map-marker-alt mr-3"></i>Destinations
+                </a>
+                <a href="#blog" class="mobile-menu-item smooth-scroll">
+                    <i class="fas fa-blog mr-3"></i>Blog
+                </a>
+                <a href="#contact" class="mobile-menu-item smooth-scroll">
+                    <i class="fas fa-envelope mr-3"></i>Contact
+                </a>
+            </nav>
+         
+        </div>
+    </div>
+
+    <!-- Fixed Close Button (only visible when menu is open) -->
+    <button id="mobile-menu-close" class="mobile-menu-close">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <!-- Fixed WhatsApp Icon -->
+    <a href="https://wa.me/94112345678?text=Hello! I'm interested in your tours." 
+       target="_blank" 
+       class="whatsapp-icon" 
+       title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <section class="relative h-screen overflow-hidden mt-16">
+        <!-- Image Slider Container -->
+        <div class="hero-slider relative w-full h-full">
+            <!-- Slide 1 -->
+
+             <nav class="bg-white shadow-md fixed w-full z-[9999] top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <img class="flex item-center h-15 justify-center" src="assets/images/logo.jpeg" alt="Description of image" />
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-green-800">TAPROBANE DIARIES</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#home" class="text-gray-700 hover:text-green-600 smooth-scroll font-medium">Home</a>
+                    <a href="#tours" class="text-gray-700 hover:text-green-600 smooth-scroll font-medium">Tours</a>
+                    <a href="#destinations" class="text-gray-700 hover:text-green-600 smooth-scroll font-medium">Destinations</a>
+                    <a href="#blog" class="text-gray-700 hover:text-green-600 smooth-scroll font-medium">Blog</a>
+                    <a href="#contact" class="text-gray-700 hover:text-green-600 smooth-scroll font-medium">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700 focus:outline-none p-2">
+                        <div class="hamburger-icon">
+                            <div class="hamburger-line"></div>
+                            <div class="hamburger-line"></div>
+                            <div class="hamburger-line"></div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+           <div id="slider-container" class="relative w-full h-screen overflow-hidden">
+        <!-- Slides will be dynamically inserted here -->
+    </div>
+        <!-- Navigation Arrows -->
+        <button id="prevSlide" class="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300">
+            <i class="fas fa-chevron-left text-xl"></i>
+        </button>
+        <button id="nextSlide" class="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all duration-300">
+            <i class="fas fa-chevron-right text-xl"></i>
+        </button>
+
+        <!-- Slide Indicators -->
+        <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">
+            <button class="slide-indicator active w-3 h-3 bg-white rounded-full transition-all duration-300" data-slide="0"></button>
+            <button class="slide-indicator w-3 h-3 bg-white/50 rounded-full transition-all duration-300" data-slide="1"></button>
+            <button class="slide-indicator w-3 h-3 bg-white/50 rounded-full transition-all duration-300" data-slide="2"></button>
+            <button class="slide-indicator w-3 h-3 bg-white/50 rounded-full transition-all duration-300" data-slide="3"></button>
+        </div>
+
+        <!-- Scroll Down Icon -->
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center z-20 animate-bounce">
+            <a href="#destinations" class="text-yellow-600 text-2xl">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <main>
+        <section id="destinations" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                    <div class="text-center md:text-left mb-6 md:mb-0">
+                        <span class="text-sm font-semibold tracking-wider text-yellow-600 uppercase">Trending Destinations</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mt-2">Popular Travel <span class="gradient-text">Locations</span></h2>
+                    </div>
+                    <div>
+                        <button onclick="window.location.href='/destinations.html'"
+                            class="group gold-button py-3 px-6 text-lg rounded-full flex items-center transition-all duration-300 shadow-lg hover:shadow-xl">
+                            Explore More <span class="w-8 h-8 flex items-center justify-center rounded-full bg-navy-900 ml-2 transition-all duration-300 group-hover:rotate-45">
+                                <i class="fas fa-arrow-right text-gold-500"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="destination-card relative w-full h-80 bg-center bg-cover rounded-2xl overflow-hidden transition-all duration-300 shadow-md"
+                        style="background-image: url('assets/images/colombo.jpg');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Colombo</h3>
+                            <div class="flex items-center text-white/80">
+                                <i class="fas fa-map-marker-alt mr-2 text-yellow-600"></i>
+                                <span>Sri Lanka</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='destination-details'"
+                            class="absolute top-4 right-4 bg-white/90 hover:bg-white text-navy-900 font-medium py-2 px-4 rounded-full transition-all duration-300">
+                            View Details
+                        </button>
+                    </div>
+                    <div class="destination-card relative w-full h-80 bg-center bg-cover rounded-2xl overflow-hidden transition-all duration-300 shadow-md"
+                        style="background-image: url('assets/images/elle.jpg');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Ella</h3>
+                            <div class="flex items-center text-white/80">
+                                <i class="fas fa-map-marker-alt mr-2 text-yellow-600"></i>
+                                <span>Sri Lanka</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='destination-details'"
+                            class="absolute top-4 right-4 bg-white/90 hover:bg-white text-navy-900 font-medium py-2 px-4 rounded-full transition-all duration-300">
+                            View Details
+                        </button>
+                    </div>
+                    <div class="destination-card relative w-full h-80 bg-center bg-cover rounded-2xl overflow-hidden transition-all duration-300 shadow-md"
+                        style="background-image: url('assets/images/negombo.jpg');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Negombo</h3>
+                            <div class="flex items-center text-white/80">
+                                <i class="fas fa-map-marker-alt mr-2 text-yellow-600"></i>
+                                <span>Sri Lanka</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='destination-details'"
+                            class="absolute top-4 right-4 bg-white/90 hover:bg-white text-navy-900 font-medium py-2 px-4 rounded-full transition-all duration-300">
+                            View Details
+                        </button>
+                    </div>
+                    <div class="destination-card relative w-full h-80 bg-center bg-cover rounded-2xl overflow-hidden transition-all duration-300 shadow-md"
+                        style="background-image: url('assets/images/kandy-maligawa.jpg');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Kandy</h3>
+                            <div class="flex items-center text-white/80">
+                                <i class="fas fa-map-marker-alt mr-2 text-yellow-600"></i>
+                                <span>Sri Lanka</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='destination-details'"
+                            class="absolute top-4 right-4 bg-white/90 hover:bg-white text-navy-900 font-medium py-2 px-4 rounded-full transition-all duration-300">
+                            View Details
+                        </button>
+                    </div>
+                    <div class="destination-card relative w-full h-80 bg-center bg-cover rounded-2xl overflow-hidden transition-all duration-300 shadow-md"
+                        style="background-image: url('assets/images/sigiriya.jpg');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Sigiriya</h3>
+                            <div class="flex items-center text-white/80">
+                                <i class="fas fa-map-marker-alt mr-2 text-yellow-600"></i>
+                                <span>Sri Lanka</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='destination-details'"
+                            class="absolute top-4 right-4 bg-white/90 hover:bg-white text-navy-900 font-medium py-2 px-4 rounded-full transition-all duration-300">
+                            View Details
+                        </button>
+                    </div>
+                    <div class="destination-card relative w-full h-80 bg-center bg-cover rounded-2xl overflow-hidden transition-all duration-300 shadow-md"
+                        style="background-image: url('assets/images/galle.jpg');">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Galle</h3>
+                            <div class="flex items-center text-white/80">
+                                <i class="fas fa-map-marker-alt mr-2 text-yellow-600"></i>
+                                <span>Sri Lanka</span>
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='//destination-details'"
+                            class="absolute top-4 right-4 bg-white/90 hover:bg-white text-navy-900 font-medium py-2 px-4 rounded-full transition-all duration-300">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-navy-50">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2 relative">
+                        <div class="relative rounded-3xl overflow-hidden shadow-xl h-96 w-full">
+                            <img src="assets/images/about_ele.jpg" alt="About Us" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-lg w-3/4 animate-float border-2 border-gold-400">
+                            <div class="flex items-center">
+                                <div class="bg-gold-100 p-3 rounded-full mr-4 border border-gold-200">
+                                    <i class="fas fa-award text-yellow-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-navy-900">10+ Years Experience</h4>
+                                    <p class="text-sm text-navy-600">Trusted travel experts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <span class="text-sm font-semibold tracking-wider text-yellow-600 uppercase">About Travel Agency</span>
+                        <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mt-2 mb-6">Crafting <span class="gradient-text">Unforgettable</span> Journeys</h2>
+                        <p class="text-lg text-navy-600 mb-6">At Digicompass, we don't just plan trips - we create experiences that linger in your memory long after you've returned home. Our passion for travel and attention to detail ensures every journey is as unique as you are.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div class="flex items-start">
+                                <div class="bg-gold-100 p-2 rounded-full mr-4 border border-gold-200">
+                                    <i class="fas fa-check text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-navy-900 mb-1">Expert Guides</h4>
+                                    <p class="text-navy-600 text-sm">Local experts who bring destinations to life</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-gold-100 p-2 rounded-full mr-4 border border-gold-200">
+                                    <i class="fas fa-check text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-navy-900 mb-1">Tailored Itineraries</h4>
+                                    <p class="text-navy-600 text-sm">Customized to your preferences and pace</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-gold-100 p-2 rounded-full mr-4 border border-gold-200">
+                                    <i class="fas fa-check text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-navy-900 mb-1">24/7 Support</h4>
+                                    <p class="text-navy-600 text-sm">Always available when you need us</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-gold-100 p-2 rounded-full mr-4 border border-gold-200">
+                                    <i class="fas fa-check text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-navy-900 mb-1">Sustainable Travel</h4>
+                                    <p class="text-navy-600 text-sm">Eco-friendly options that give back</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="group gold-button py-3 px-8 text-lg rounded-full flex items-center transition-all duration-300 shadow-lg hover:shadow-xl">
+                            Our Story <span class="w-8 h-8 flex items-center justify-center rounded-full bg-navy-900 ml-2 transition-all duration-300 group-hover:rotate-45">
+                                <i class="fas fa-arrow-right text-gold-500"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-sm font-semibold tracking-wider text-yellow-600 uppercase">Featured Tours</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mt-2 mb-4">Discover Our <span class="gradient-text">Handpicked</span> Tours</h2>
+                    <p class="text-navy-600">From cultural immersions to adventure-packed itineraries, our tours are designed to showcase the best each destination has to offer.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-navy-100">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="assets/images/colombo.jpg" alt="Colombo Tour" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                            <div class="absolute top-4 right-4 bg-gold-500 text-navy-900 text-xs font-bold px-3 py-1 rounded-full">
+                                Popular
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-navy-900">Colombo Discovery</h3>
+                                <span class="bg-navy-100 text-navy-700 text-xs font-semibold px-2 py-1 rounded">5 Days</span>
+                            </div>
+                            <p class="text-navy-500 text-sm mb-4">Explore the vibrant capital city with its colonial heritage and modern attractions.</p>
+                            <div class="flex justify-between items-center border-t border-navy-100 pt-4">
+                                <div>
+                                    <span class="text-navy-500 text-sm">From</span>
+                                    <p class="text-lg font-bold text-navy-900">$473 <span class="text-navy-400 text-sm line-through">$599</span></p>
+                                </div>
+                                <button class="text-yellow-600 hover:text-gold-700 font-medium flex items-center">
+                                    View Tour <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-navy-100">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="assets/images/kandy.jpg" alt="Kandy Tour" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-navy-900">Kandy Cultural</h3>
+                                <span class="bg-navy-100 text-navy-700 text-xs font-semibold px-2 py-1 rounded">4 Days</span>
+                            </div>
+                            <p class="text-navy-500 text-sm mb-4">Immerse yourself in the rich cultural heritage of Sri Lanka's hill capital.</p>
+                            <div class="flex justify-between items-center border-t border-navy-100 pt-4">
+                                <div>
+                                    <span class="text-navy-500 text-sm">From</span>
+                                    <p class="text-lg font-bold text-navy-900">$520 <span class="text-navy-400 text-sm line-through">$650</span></p>
+                                </div>
+                                <button class="text-yellow-600 hover:text-gold-700 font-medium flex items-center">
+                                    View Tour <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-navy-100">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="assets/images/galle.jpg" alt="Galle Tour" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                            <div class="absolute top-4 right-4 bg-gold-500 text-navy-900 text-xs font-bold px-3 py-1 rounded-full">
+                                New
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-navy-900">Galle Coastal</h3>
+                                <span class="bg-navy-100 text-navy-700 text-xs font-semibold px-2 py-1 rounded">3 Days</span>
+                            </div>
+                            <p class="text-navy-500 text-sm mb-4">Discover the Dutch colonial charm and beautiful beaches of southern Sri Lanka.</p>
+                            <div class="flex justify-between items-center border-t border-navy-100 pt-4">
+                                <div>
+                                    <span class="text-navy-500 text-sm">From</span>
+                                    <p class="text-lg font-bold text-navy-900">$450 <span class="text-navy-400 text-sm line-through">$580</span></p>
+                                </div>
+                                <button class="text-yellow-600 hover:text-gold-700 font-medium flex items-center">
+                                    View Tour <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group border border-navy-100">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="assets/images/sigiriya.jpg" alt="Sigiriya Tour" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-navy-900">Sigiriya Adventure</h3>
+                                <span class="bg-navy-100 text-navy-700 text-xs font-semibold px-2 py-1 rounded">5 Days</span>
+                            </div>
+                            <p class="text-navy-500 text-sm mb-4">Climb the iconic rock fortress and explore ancient Sri Lankan kingdoms.</p>
+                            <div class="flex justify-between items-center border-t border-navy-100 pt-4">
+                                <div>
+                                    <span class="text-navy-500 text-sm">From</span>
+                                    <p class="text-lg font-bold text-navy-900">$530 <span class="text-navy-400 text-sm line-through">$670</span></p>
+                                </div>
+                                <button class="text-yellow-600 hover:text-gold-700 font-medium flex items-center">
+                                    View Tour <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <button class="group gold-button py-3 px-8 text-lg rounded-full flex items-center mx-auto transition-all duration-300 shadow-lg hover:shadow-xl">
+                        View All Tours <span class="w-8 h-8 flex items-center justify-center rounded-full bg-navy-900 ml-2 transition-all duration-300 group-hover:rotate-45">
+                            <i class="fas fa-arrow-right text-gold-500"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 navy-section">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="text-sm font-semibold tracking-wider text-yellow-600 uppercase">Testimonials</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mt-2 mb-4">Travelers <span class="gradient-text">Love</span> Our Tours</h2>
+                    <p class="text-navy-200">Don't just take our word for it - hear what our customers have to say about their experiences with Digicompass.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="testimonial-card bg-navy-800 p-8 rounded-2xl shadow-md transition-all duration-300 border border-navy-700">
+                        <div class="flex items-center mb-6">
+                            <div class="flex items-center">
+                                <img src="assets/images/testimonial-1.jpg" alt="Sarah Johnson" class="w-12 h-12 rounded-full object-cover mr-4 border-2 border-gold-400">
+                                <div>
+                                    <h4 class="font-bold text-white">Sarah Johnson</h4>
+                                    <p class="text-navy-300 text-sm">March 2025</p>
+                                </div>
+                            </div>
+                            <div class="ml-auto flex text-yellow-600">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-navy-200 italic mb-6">"The attention to detail in our Sri Lanka tour was incredible. Every accommodation was perfect, and our guide's knowledge brought each site to life in ways we couldn't have imagined."</p>
+                        <div class="flex items-center text-sm text-navy-300">
+                            <i class="fas fa-map-marker-alt mr-2 text-yellow-600"></i>
+                            <span>Colombo & Kandy Tour</span>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card bg-navy-800 p-8 rounded-2xl shadow-md transition-all duration-300 border border-navy-700">
+                        <div class="flex items-center mb-6">
+                            <div class="flex items-center">
+                                <img src="assets/images/testimonial-2.jpg" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover mr-4 border-2 border-gold-400">
+                                <div>
+                                    <h4 class="font-bold text-white">Michael Chen</h4>
+                                    <p class="text-navy-300 text-sm">February 2025</p>
+                                </div>
+                            </div>
+                            <div class="ml-auto flex text-yellow-600">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-navy-200 italic mb-6">"As a solo traveler, I was nervous about booking a tour, but Digicompass made me feel completely safe and cared for. The small group size was perfect for making friends while still having personal attention."</p>
+                        <div class="flex items-center text-sm text-navy-300">
+                            <i class="fas fa-map-marker-alt mr-2 text-yellow-600"></i>
+                            <span>Ella Adventure Tour</span>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card bg-navy-800 p-8 rounded-2xl shadow-md transition-all duration-300 border border-navy-700">
+                        <div class="flex items-center mb-6">
+                            <div class="flex items-center">
+                                <img src="assets/images/testimonial-3.jpg" alt="Emily Davis" class="w-12 h-12 rounded-full object-cover mr-4 border-2 border-gold-400">
+                                <div>
+                                    <h4 class="font-bold text-white">Emily Davis</h4>
+                                    <p class="text-navy-300 text-sm">January 2025</p>
+                                </div>
+                            </div>
+                            <div class="ml-auto flex text-yellow-600">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <p class="text-navy-200 italic mb-6">"Our family of five had the most amazing time on the Cultural Triangle tour. The kids loved the Sigiriya climb, and we appreciated how flexible the guides were with our schedule and needs."</p>
+                        <div class="flex items-center text-sm text-navy-300">
+                            <i class="fas fa-map-marker-alt mr-2 text-yellow-600"></i>
+                            <span>Cultural Triangle Tour</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gradient-to-r from-navy-800 to-navy-700 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready for Your Next Adventure?</h2>
+                <p class="text-xl max-w-2xl mx-auto mb-8">Sign up for our newsletter and get exclusive deals, travel tips, and destination inspiration straight to your inbox.</p>
+                <div class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-full text-navy-900 focus:outline-none focus:ring-2 focus:ring-gold-300">
+                    <button class="gold-button px-6 py-3 font-semibold rounded-full transition-all duration-300 shadow-lg">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-navy-900 text-navy-300 pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <!-- Replace the logo image with text title -->
+                    <h3 class="text-3xl font-bold gradient-text mb-6">TAPROBANE DIARIES</h3>
+                    <p class="mb-6">Creating unforgettable travel experiences since 2010. Let us guide you to your next adventure.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center hover:bg-gold-500 hover:text-navy-900 transition-all duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center hover:bg-gold-500 hover:text-navy-900 transition-all duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center hover:bg-gold-500 hover:text-navy-900 transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-navy-800 flex items-center justify-center hover:bg-gold-500 hover:text-navy-900 transition-all duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-yellow-600 transition-colors duration-300">Home</a></li>
+                        <li><a href="#" class="hover:text-yellow-600 transition-colors duration-300">About Us</a></li>
+                        <li><a href="#" class="hover:text-yellow-600 transition-colors duration-300">Tours</a></li>
+                        <li><a href="#" class="hover:text-yellow-600 transition-colors duration-300">Destinations</a></li>
+                        <li><a href="#" class="hover:text-yellow-600 transition-colors duration-300">Special Offers</a></li>
+                        <li><a href="#" class="hover:text-yellow-600 transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6">Support</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-yellow-600 transition-colors duration-300">FAQs</a></li>
+                        <li><a href="#" class="hover:text-yellow-600 transition-colors duration-300">Booking Guide</a></li>
+                        <li><a href="#" class="hover:text-yellow-600 transition-colors duration-300">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-yellow-600 transition-colors duration-300">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-yellow-600 transition-colors duration-300">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-yellow-600 mt-1 mr-3"></i>
+                            <span>123 Travel Street, Colombo 01, Sri Lanka</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-yellow-600 mr-3"></i>
+                            <span>+94 11 234 5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-yellow-600 mr-3"></i>
+                            <span>info@digicompass.com</span>
+                        </li>
+                    </ul>
+                    <div class="mt-6 rounded-xl overflow-hidden border border-navy-700">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31689.49663095449!2d79.8621696!3d6.8681728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25b21c4ad9c7f%3A0x2db603e21bdfd4f9!2sHavelock%20City%20Mall!5e0!3m2!1sen!2slk!4v1746694429768!5m2!1sen!2slk" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-navy-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-navy-500 text-sm mb-4 md:mb-0">© 2025 Digicompass. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-navy-500 hover:text-yellow-600 text-sm transition-colors duration-300">Privacy Policy</a>
+                    <a href="#" class="text-navy-500 hover:text-yellow-600 text-sm transition-colors duration-300">Terms of Service</a>
+                    <a href="#" class="text-navy-500 hover:text-yellow-600 text-sm transition-colors duration-300">Cookies Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuration for dynamic slider
+            const imageCount = 23; // Total images to cycle through
+            const visibleIndicators = 4; // Only show 4 indicators
+            const imageBasePath = 'assets/images/slider/'; // FIXED: Changed from 'slides/' to 'slider/'
+            const imageExtension = '.jpg';
+            
+            // Slidedata for content (will cycle through these for all 23 images)
+            const slideData = [
+                { title: "Discover Paradise", subtitle: "Beaches", description: "Experience the pristine beaches and crystal-clear waters of Sri Lanka's coastline.", button1: "Explore Beach Tours", button2: "View Destinations" },
+                { title: "Cultural", subtitle: "Heritage", description: "Immerse yourself in ancient temples, sacred sites, and rich traditions of Sri Lanka.", button1: "Cultural Tours", button2: "Book Now" },
+                { title: "Adventure", subtitle: "Awaits", description: "Climb ancient rock fortresses and explore breathtaking landscapes that will amaze you.", button1: "Adventure Tours", button2: "View Adventures" },
+                { title: "Hill Country", subtitle: "Escapes", description: "Journey through rolling tea plantations and misty mountains in Sri Lanka's highlands.", button1: "Hill Country Tours", button2: "Call Us" },
+                { title: "Wildlife", subtitle: "Safari", description: "Encounter majestic elephants and leopards in their natural habitat.", button1: "Safari Tours", button2: "Book Safari" },
+                { title: "Ancient", subtitle: "Cities", description: "Explore the ruins of ancient kingdoms and archaeological wonders.", button1: "History Tours", button2: "Learn More" },
+                { title: "Tea", subtitle: "Plantations", description: "Walk through emerald tea fields and learn about Ceylon tea.", button1: "Tea Tours", button2: "Taste Tea" },
+                { title: "Coastal", subtitle: "Beauty", description: "Relax on golden sandy beaches and enjoy water sports.", button1: "Beach Tours", button2: "Surf & Sun" }
+            ];
+
+            // Create ALL 23 slides from your assets folder
+            function createSlides() {
+                const sliderContainer = document.getElementById('slider-container');
+                if (!sliderContainer) return;
+                
+                sliderContainer.innerHTML = '';
+
+                // Create all 23 slides using your actual images
+                for (let i = 0; i < imageCount; i++) {
+                    const slide = slideData[i % slideData.length]; // Cycle through slideData
+                    const slideElement = document.createElement('div');
+                    slideElement.className = `slide absolute inset-0 transition-opacity duration-1000 ${i === 0 ? 'active opacity-100' : 'opacity-0'}`;
+                    
+                    slideElement.innerHTML = `
+                        <div class="absolute inset-0 bg-navy-900/40 z-10"></div>
+                        <img src="${imageBasePath}${i + 1}${imageExtension}" 
+                             alt="${slide.title}" 
+                             class="absolute inset-0 w-full h-full object-cover z-0" 
+                             onload="console.log('Successfully loaded: ${imageBasePath}${i + 1}${imageExtension}')"
+                             onerror="console.log('Failed to load: ${imageBasePath}${i + 1}${imageExtension}'); this.style.background='linear-gradient(45deg, #1e3a8a, #3b82f6)'; this.style.display='block';" />
+                        <div class="absolute inset-0 flex items-center z-20">
+                            <div class="container mx-auto px-4">
+                                <div class="max-w-2xl text-white">
+                                    <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6 animate__animated animate__fadeInUp">
+                                        ${slide.title} <span class="gradient-text">${slide.subtitle}</span>
+                                    </h1>
+                                    <p class="text-xl md:text-2xl mb-8 animate__animated animate__fadeInUp animate__delay-1s">
+                                        ${slide.description}
+                                    </p>
+                                    <div class="flex flex-col sm:flex-row gap-4 animate__animated animate__fadeInUp animate__delay-2s">
+                                        <a href="#tours" class="gold-button py-3 px-8 text-lg rounded-full flex items-center transition-all duration-300 shadow-lg hover:shadow-xl">
+                                            ${slide.button1}
+                                            <span class="w-8 h-8 flex items-center justify-center rounded-full bg-navy-900 ml-2">
+                                                <i class="fas fa-arrow-right text-gold-500"></i>
+                                            </span>
+                                        </a>
+                                        <a href="#destinations" class="py-3 px-8 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 text-white text-lg rounded-full flex items-center transition-all duration-300">
+                                            <i class="fas fa-map-marker-alt mr-2 text-yellow-600"></i> ${slide.button2}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    sliderContainer.appendChild(slideElement);
+                }
+            }
+
+            // Create only 4 indicators but represent all 23 images
+            function updateIndicators() {
+                const indicatorContainer = document.querySelector('.absolute.bottom-20');
+                if (indicatorContainer) {
+                    indicatorContainer.innerHTML = '';
+                    
+                    // Create only 4 indicators
+                    for (let i = 0; i < visibleIndicators; i++) {
+                        const indicator = document.createElement('button');
+                        indicator.className = `slide-indicator w-3 h-3 bg-white${i === 0 ? ' active' : '/50'} rounded-full transition-all duration-300`;
+                        indicator.setAttribute('data-slide', i);
+                        if (i === 0) indicator.style.backgroundColor = '#f2c641';
+                        indicatorContainer.appendChild(indicator);
+                    }
+                }
+            }
+
+            // Initialize slider
+            createSlides();
+            updateIndicators();
+
+            // Slider variables
+            let currentSlide = 0;
+            let slideInterval;
+
+            // Get elements
+            function getSliderElements() {
+                return {
+                    slides: document.querySelectorAll('.slide'),
+                    indicators: document.querySelectorAll('.slide-indicator'),
+                    prevBtn: document.getElementById('prevSlide'),
+                    nextBtn: document.getElementById('nextSlide')
+                };
+            }
+
+            // Show slide function - maps 23 images to 4 indicators
+            function showSlide(index) {
+                const { slides, indicators } = getSliderElements();
+                
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                    slide.style.opacity = '0';
+                });
+                
+                // Reset all indicators
+                indicators.forEach(indicator => {
+                    indicator.classList.remove('active');
+                    indicator.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+                });
+
+                // Show current slide
+                if (slides[index]) {
+                    slides[index].classList.add('active');
+                    slides[index].style.opacity = '1';
+                }
+                
+                // Map current slide (0-22) to indicator (0-3)
+                const indicatorIndex = Math.floor((index / imageCount) * visibleIndicators);
+                if (indicators[indicatorIndex]) {
+                    indicators[indicatorIndex].classList.add('active');
+                    indicators[indicatorIndex].style.backgroundColor = '#f2c641';
+                }
+                
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                const next = (currentSlide + 1) % imageCount; // Cycle through all 23 images
+                showSlide(next);
+            }
+
+            function prevSlide() {
+                const prev = (currentSlide - 1 + imageCount) % imageCount;
+                showSlide(prev);
+            }
+
+            function startSlideShow() {
+                slideInterval = setInterval(nextSlide, 3000); // 3 seconds per slide
+            }
+
+            function stopSlideShow() {
+                clearInterval(slideInterval);
+            }
+
+            // Event listeners
+            setTimeout(() => {
+                const { prevBtn, nextBtn } = getSliderElements();
+                
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        nextSlide();
+                        stopSlideShow();
+                        startSlideShow();
+                    });
+                }
+
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        prevSlide();
+                        stopSlideShow();
+                        startSlideShow();
+                    });
+                }
+
+                // Indicator clicks - each indicator represents ~6 images
+                document.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('slide-indicator')) {
+                        const indicatorIndex = parseInt(e.target.getAttribute('data-slide'));
+                        const imagesPerIndicator = Math.ceil(imageCount / visibleIndicators); // ~6 images per indicator
+                        const targetSlide = indicatorIndex * imagesPerIndicator;
+                        showSlide(Math.min(targetSlide, imageCount - 1));
+                        stopSlideShow();
+                        startSlideShow();
+                    }
+                });
+
+                const heroSlider = document.querySelector('.hero-slider');
+                if (heroSlider) {
+                    heroSlider.addEventListener('mouseenter', stopSlideShow);
+                    heroSlider.addEventListener('mouseleave', startSlideShow);
+                }
+
+                startSlideShow();
+            }, 100);
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    stopSlideShow();
+                    startSlideShow();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    stopSlideShow();
+                    startSlideShow();
+                }
+            });
+
+            // Mobile Menu Elements
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const mobileMenuSidebar = document.getElementById('mobile-menu-sidebar');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const hamburgerIcon = document.querySelector('.hamburger-icon');
+
+            // Open Mobile Menu
+            if (menuBtn) {
+                menuBtn.addEventListener('click', function() {
+                    console.log('Opening menu');
+                    mobileMenuOverlay.classList.add('active');
+                    mobileMenuSidebar.classList.add('active');
+                    hamburgerIcon.classList.add('active');
+                    mobileMenuClose.style.opacity = '1';
+                    mobileMenuClose.style.visibility = 'visible';
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+
+            // Close Mobile Menu Function
+            function closeMobileMenu() {
+                console.log('Closing menu');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('active');
+                if (mobileMenuSidebar) mobileMenuSidebar.classList.remove('active');
+                if (hamburgerIcon) hamburgerIcon.classList.remove('active');
+                if (mobileMenuClose) {
+                    mobileMenuClose.style.opacity = '0';
+                    mobileMenuClose.style.visibility = 'hidden';
+                }
+                document.body.style.overflow = '';
+            }
+
+            // Close menu event listeners
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Close button clicked');
+                    closeMobileMenu();
+                });
+            }
+
+            if (mobileMenuOverlay) {
+                mobileMenuOverlay.addEventListener('click', function(e) {
+                    if (e.target === mobileMenuOverlay) {
+                        console.log('Overlay clicked');
+                        closeMobileMenu();
+                    }
+                });
+            }
+
+            const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+            mobileMenuItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    console.log('Menu item clicked');
+                    closeMobileMenu();
+                });
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeMobileMenu();
+                }
+            });
+
+            // Smooth Scrolling
+            document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Inquiry Form (if exists)
+            const submitInquiry = document.getElementById('submit-inquiry');
+            const formMessage = document.getElementById('form-message');
+            if (submitInquiry && formMessage) {
+                submitInquiry.addEventListener('click', () => {
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    if (name && email && message) {
+                        formMessage.classList.remove('hidden');
+                        document.getElementById('name').value = '';
+                        document.getElementById('email').value = '';
+                        document.getElementById('message').value = '';
+                        setTimeout(() => formMessage.classList.add('hidden'), 3000);
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
