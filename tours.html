@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TAPROBANE DIARIES</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.jpeg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            200: '#bcccdc',
+                            300: '#9fb3c8',
+                            400: '#829ab1',
+                            500: '#627d98',
+                            600: '#486581',
+                            700: '#334e68',
+                            800: '#243b53',
+                            900: '#102a43',
+                        },
+                        gold: {
+                            100: '#fdf4d9',
+                            200: '#fae8b3',
+                            300: '#f7dd8d',
+                            400: '#f5d167',
+                            500: '#f2c641',
+                            600: '#e6b422',
+                            700: '#c99a0e',
+                            800: '#a37f0b',
+                            900: '#7d6508',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #f2c641, #e6b422);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(16, 42, 67, 0.9) 0%, rgba(48, 79, 111, 0.9) 100%);
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #f2c641;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .gallery-image {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        
+        .gold-button {
+            background: linear-gradient(135deg, #f2c641, #e6b422);
+            color: #102a43;
+            font-weight: 600;
+        }
+        
+        .gold-button:hover {
+            background: linear-gradient(135deg, #e6b422, #c99a0e);
+            transform: translateY(-2px);
+        }
+        
+        .navy-section {
+            background-color: #102a43;
+            color: white;
+        }
+
+        /* Mobile Menu Overlay and Animation */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-sidebar {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background: #000000; /* Changed to black background */
+            z-index: 9999;
+            transition: left 0.3s ease;
+            /* box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1); */
+            overflow-y: auto;
+        }
+
+        .mobile-menu-sidebar.active {
+            left: 0;
+        }
+
+        .mobile-menu-content {
+            padding: 20px;
+            background: transparent; /* Make content background transparent */
+        }
+
+        .mobile-menu-item {
+            display: block;
+            padding: 15px;
+            color: white !important; /* Force white text color */
+            text-decoration: none;
+            font-weight: 500;
+                       transition: color 0.3s ease;
+            
+            margin-bottom: 5px;
+            border-radius: 8px;
+        }
+
+        .mobile-menu-item:hover {
+            color: #10b981 !important; /* Green color on hover */
+            background: rgba(255, 255, 255, 0.2); /* Slightly more opaque on hover */
+        }
+
+        .mobile-menu-item i {
+            color: #10b981; /* Make icons green */
+        }
+
+        /* Add a close button */
+        .mobile-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+            border: none;
+            font-size: 24px;
+            color: white; /* White color for close button */
+            cursor: pointer;
+            z-index: 10000;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+/* WhatsApp Icon Styles */
+.whatsapp-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366; /* WhatsApp green */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    z-index: 9999;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    text-decoration: none;
+}
+
+.whatsapp-icon:hover {
+    background: #128c7e; /* Darker green on hover */
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+/* Pulse animation for WhatsApp icon */
+.whatsapp-icon::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid #25d366;
+    border-radius: 50%;
+    opacity: 0;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
+}
+
+        /* Hero Slider Styles */
+        .hero-slider {
+            position: relative;
+        }
+
+        .slide {
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-indicator.active {
+            background-color: #f2c641;
+            transform: scale(1.2);
+        }
+
+        .slide-indicator:hover {
+            background-color: #f2c641;
+            transform: scale(1.1);
+        }
+
+        /* Navigation arrows hover effects */
+        #prevSlide:hover, #nextSlide:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #prevSlide, #nextSlide {
+                display: none;
+            }
+        }
+
+        /* Hamburger Icon Styles */
+        .hamburger-icon {
+            display: flex;
+            flex-direction: column;
+            width: 24px;
+            height: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            justify-content: space-between;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 2px;
+            background-color:white;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        /* Hamburger animation when active */
+        .hamburger-icon.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger-icon.active .hamburger-line:nth-child(2) {
+            opacity: 100;
+            transform: scaleX(0);
+        }
+
+        .hamburger-icon.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Hover effect */
+        .hamburger-icon:hover .hamburger-line {
+            background-color:rgb(58, 122, 15);
+        }
+  @keyframes scroll-bidirectional {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+        .animate-scroll-bidirectional {
+            display: flex;
+            width: calc(100% * 2); /* Double the width to accommodate duplicated content */
+            animation: scroll-bidirectional 60s linear infinite;
+        }
+        .animate-scroll-bidirectional:hover {
+            animation-play-state: paused;
+        }
+       
+
+    </style>
+</head>
+
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center h-80 mt-24" style="background-image: url('assets/images/sub-hero.webp');">
+        <div class="absolute inset-0 bg-gradient-to-r from-navy-900/90 via-navy-900/40 to-transparent flex items-center justify-center">
+            <div class="container mx-auto px-4 text-left text-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Discover Our Tours</h1>
+                <p class="text-xl text-yellow-500 max-w-2xl">Handcrafted journeys to Sri Lanka's most breathtaking destinations</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Introduction Section -->
+        <section class="py-16 bg-navy-100">
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mb-6">Discover the Best Sri Lanka Tours with Digicompass</h2>
+                    <div class="prose text-navy-600 text-lg">
+                        <p class="mb-4">At Digicompass, we specialize in offering expertly crafted Sri Lanka tours designed to provide travelers with an unforgettable journey through one of the world's most enchanting destinations. Whether you're seeking cultural exploration, adventurous escapades, or relaxation on stunning beaches, our tours cater to every type of traveler.</p>
+                        
+                        <p class="mb-4">Our Sri Lanka holidays offer a perfect mix of adventure, relaxation, and cultural immersion. From the breathtaking landscapes of Ella and Nuwara Eliya to the ancient ruins of Anuradhapura and Polonnaruwa, each itinerary is carefully curated to showcase the island's rich history, vibrant culture, and natural beauty.</p>
+                        
+                        <p class="mb-4">With our diverse range of Sri Lanka tours, you can choose from tailored experiences like luxury tours, family-friendly holidays, or guided tours to explore the island's UNESCO World Heritage sites. Want to go on an exciting wildlife safari or relax in a boutique beach resort? We have something for everyone.</p>
+                        
+                        <p class="mb-4">TAPROBANE DIARIEStakes pride in providing personalized service, offering flexible itineraries and expert guidance to ensure you experience Sri Lanka in comfort and style. We cater to all your travel needs, making sure your holiday is stress-free, seamless, and truly unforgettable.</p>
+                        
+                        <p class="font-medium text-navy-900">Start planning your dream Sri Lanka holiday today with Digicompass, and let us help you create lasting memories on this magical island.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tour Collection Section -->
+        <section class="py-12 bg-navy-50">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-bold text-navy-900">Our Tour Collection</h2>
+                        <p class="text-navy-600">Filter by your preferences to find your perfect adventure</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <div class="relative">
+                            <select class="appearance-none bg-navy-50 border border-navy-200 text-navy-700 py-2 pl-4 pr-8 rounded-full focus:outline-none focus:ring-2 focus:ring-gold-400">
+                                <option>Sort by: Recommended</option>
+                                <option>Sort by: Price Low to High</option>
+                                <option>Sort by: Price High to Low</option>
+                                <option>Sort by: Duration</option>
+                                <option>Sort by: Popularity</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-navy-700">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap gap-3 mb-8">
+                    <button class="px-4 py-2 rounded-full bg-navy-100 text-navy-700 text-sm font-medium transition-all duration-300 hover:bg-gold-400 hover:text-navy-900 hover:-translate-y-1 active:bg-gold-400 active:text-navy-900">
+                        All Tours
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-navy-100 text-navy-700 text-sm font-medium transition-all duration-300 hover:bg-gold-400 hover:text-navy-900 hover:-translate-y-1 active:bg-gold-400 active:text-navy-900">
+                        Cultural
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-navy-100 text-navy-700 text-sm font-medium transition-all duration-300 hover:bg-gold-400 hover:text-navy-900 hover:-translate-y-1 active:bg-gold-400 active:text-navy-900">
+                        Adventure
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-navy-100 text-navy-700 text-sm font-medium transition-all duration-300 hover:bg-gold-400 hover:text-navy-900 hover:-translate-y-1 active:bg-gold-400 active:text-navy-900">
+                        Beach
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-navy-100 text-navy-700 text-sm font-medium transition-all duration-300 hover:bg-gold-400 hover:text-navy-900 hover:-translate-y-1 active:bg-gold-400 active:text-navy-900">
+                        Wildlife
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-navy-100 text-navy-700 text-sm font-medium transition-all duration-300 hover:bg-gold-400 hover:text-navy-900 hover:-translate-y-1 active:bg-gold-400 active:text-navy-900">
+                        Family
+                    </button>
+                    <button class="px-4 py-2 rounded-full bg-navy-100 text-navy-700 text-sm font-medium transition-all duration-300 hover:bg-gold-400 hover:text-navy-900 hover:-translate-y-1 active:bg-gold-400 active:text-navy-900">
+                        Luxury
+                    </button>
+                </div>
+                
+                <!-- Tour Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Tour Card 1 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl cursor-pointer">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="./assets/images/colombo.webp" alt="Colombo Discovery Tour" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-gold-500 text-navy-900 px-3 py-1 rounded-full text-xs font-bold uppercase">
+                                Popular
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-900/70 to-transparent p-4">
+                                <div class="flex items-center text-white">
+                                    <i class="fas fa-map-marker-alt text-gold-500 mr-2"></i>
+                                    <span>Colombo, Negombo, Pinnawala</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-bold text-navy-900">Colombo Discovery</h3>
+                                <div class="flex items-center text-gold-500">
+                                    <i class="fas fa-star"></i>
+                                    <span class="ml-1 text-navy-700">4.8</span>
+                                </div>
+                            </div>
+                            <p class="text-navy-500 text-sm mb-4">Explore the vibrant capital city with its colonial heritage and modern attractions.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <span class="text-xs text-navy-500">Duration</span>
+                                    <p class="text-sm font-medium text-navy-700"><i class="fas fa-clock text-gold-500 mr-1"></i> 5 Days / 4 Nights</p>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-navy-500">Group Size</span>
+                                    <p class="text-sm font-medium text-navy-700"><i class="fas fa-users text-gold-500 mr-1"></i> Max 12</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-navy-100 pt-4 flex justify-between items-center">
+                                <div>
+                                    <span class="text-xs text-navy-500">From</span>
+                                    <p class="text-lg font-bold text-navy-900">$473 <span class="text-sm font-normal text-navy-400 relative inline-block before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-[2px] before:bg-red-500 before:transform before:-translate-y-1/2 before:-rotate-5 ml-1">$599</span></p>
+                                </div>
+                                <a href="/tour-details" class="text-yellow-600 hover:text-gold-700 font-medium flex items-center text-sm">
+                                    View Details <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tour Card 2 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl cursor-pointer">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="assets/images/kandy.webp" alt="Kandy Cultural Tour" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-navy-700 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
+                                New
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-900/70 to-transparent p-4">
+                                <div class="flex items-center text-white">
+                                    <i class="fas fa-map-marker-alt text-gold-500 mr-2"></i>
+                                    <span>Kandy, Nuwara Eliya, Ella</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-bold text-navy-900">Hill Country Explorer</h3>
+                                <div class="flex items-center text-gold-500">
+                                    <i class="fas fa-star"></i>
+                                    <span class="ml-1 text-navy-700">4.9</span>
+                                </div>
+                            </div>
+                            <p class="text-navy-500 text-sm mb-4">Immerse yourself in the rich cultural heritage of Sri Lanka's hill capital and tea country.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <span class="text-xs text-navy-500">Duration</span>
+                                    <p class="text-sm font-medium text-navy-700"><i class="fas fa-clock text-gold-500 mr-1"></i> 7 Days / 6 Nights</p>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-navy-500">Group Size</span>
+                                    <p class="text-sm font-medium text-navy-700"><i class="fas fa-users text-gold-500 mr-1"></i> Max 10</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-navy-100 pt-4 flex justify-between items-center">
+                                <div>
+                                    <span class="text-xs text-navy-500">From</span>
+                                    <p class="text-lg font-bold text-navy-900">$720</p>
+                                </div>
+                                <a href="/tour-details" class="text-yellow-600 hover:text-gold-700 font-medium flex items-center text-sm">
+                                    View Details <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tour Card 3 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl cursor-pointer">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="assets/images/sigiriya.webp" alt="Sigiriya Adventure Tour" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
+                                20% Off
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-900/70 to-transparent p-4">
+                                <div class="flex items-center text-white">
+                                    <i class="fas fa-map-marker-alt text-gold-500 mr-2"></i>
+                                    <span>Sigiriya, Dambulla, Polonnaruwa</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-bold text-navy-900">Ancient Kingdoms</h3>
+                                <div class="flex items-center text-gold-500">
+                                    <i class="fas fa-star"></i>
+                                    <span class="ml-1 text-navy-700">4.7</span>
+                                </div>
+                            </div>
+                            <p class="text-navy-500 text-sm mb-4">Climb the iconic rock fortress and explore ancient Sri Lankan kingdoms and cave temples.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <span class="text-xs text-navy-500">Duration</span>
+                                    <p class="text-sm font-medium text-navy-700"><i class="fas fa-clock text-gold-500 mr-1"></i> 4 Days / 3 Nights</p>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-navy-500">Group Size</span>
+                                    <p class="text-sm font-medium text-navy-700"><i class="fas fa-users text-gold-500 mr-1"></i> Max 15</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-navy-100 pt-4 flex justify-between items-center">
+                                <div>
+                                    <span class="text-xs text-navy-500">From</span>
+                                    <p class="text-lg font-bold text-navy-900">$424 <span class="text-sm font-normal text-navy-400 relative inline-block before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-[2px] before:bg-red-500 before:transform before:-translate-y-1/2 before:-rotate-5 ml-1">$530</span></p>
+                                </div>
+                                <a href="/tour-details" class="text-yellow-600 hover:text-gold-700 font-medium flex items-center text-sm">
+                                    View Details <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tour Card 4 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl cursor-pointer">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="assets/images/galle.webp" alt="Galle Coastal Tour" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-gold-500 text-navy-900 px-3 py-1 rounded-full text-xs font-bold uppercase">
+                                Popular
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-900/70 to-transparent p-4">
+                                <div class="flex items-center text-white">
+                                    <i class="fas fa-map-marker-alt text-gold-500 mr-2"></i>
+                                    <span>Galle, Mirissa, Bentota</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-bold text-navy-900">Southern Beaches</h3>
+                                <div class="flex items-center text-gold-500">
+                                    <i class="fas fa-star"></i>
+                                    <span class="ml-1 text-navy-700">4.9</span>
+                                </div>
+                            </div>
+                            <p class="text-navy-500 text-sm mb-4">Discover the Dutch colonial charm and beautiful beaches of southern Sri Lanka.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <span class="text-xs text-navy-500">Duration</span>
+                                    <p class="text-sm font-medium text-navy-700"><i class="fas fa-clock text-gold-500 mr-1"></i> 6 Days / 5 Nights</p>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-navy-500">Group Size</span>
+                                    <p class="text-sm font-medium text-navy-700"><i class="fas fa-users text-gold-500 mr-1"></i> Max 12</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-navy-100 pt-4 flex justify-between items-center">
+                                <div>
+                                    <span class="text-xs text-navy-500">From</span>
+                                    <p class="text-lg font-bold text-navy-900">$675</p>
+                                </div>
+                                <a href="/tour-details" class="text-yellow-600 hover:text-gold-700 font-medium flex items-center text-sm">
+                                    View Details <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tour Card 5 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl cursor-pointer">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="assets/images/yala.webp" alt="Wildlife Safari Tour" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-navy-700 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
+                                New
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-900/70 to-transparent p-4">
+                                <div class="flex items-center text-white">
+                                    <i class="fas fa-map-marker-alt text-gold-500 mr-2"></i>
+                                    <span>Yala, Udawalawe, Sinharaja</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-bold text-navy-900">Wildlife Adventure</h3>
+                                <div class="flex items-center text-gold-500">
+                                    <i class="fas fa-star"></i>
+                                    <span class="ml-1 text-navy-700">4.8</span>
+                                </div>
+                            </div>
+                            <p class="text-navy-500 text-sm mb-4">Experience Sri Lanka's incredible biodiversity with expert-led safaris and nature walks.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <span class="text-xs text-navy-500">Duration</span>
+                                    <p class="text-sm font-medium text-navy-700"><i class="fas fa-clock text-gold-500 mr-1"></i> 5 Days / 4 Nights</p>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-navy-500">Group Size</span>
+                                    <p class="text-sm font-medium text-navy-700"><i class="fas fa-users text-gold-500 mr-1"></i> Max 8</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-navy-100 pt-4 flex justify-between items-center">
+                                <div>
+                                    <span class="text-xs text-navy-500">From</span>
+                                    <p class="text-lg font-bold text-navy-900">$580</p>
+                                </div>
+                                <a href="/tour-details" class="text-yellow-600 hover:text-gold-700 font-medium flex items-center text-sm">
+                                    View Details <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tour Card 6 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl cursor-pointer">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="assets/images/trinco.webp" alt="Trincomalee Beach Tour" class="w-full h-full object-cover">
+                            <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
+                                15% Off
+                            </div>
+                            <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-900/70 to-transparent p-4">
+                                <div class="flex items-center text-white">
+                                    <i class="fas fa-map-marker-alt text-gold-500 mr-2"></i>
+                                    <span>Trincomalee, Nilaveli, Pigeon Island</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-3">
+                                <h3 class="text-xl font-bold text-navy-900">East Coast Escape</h3>
+                                <div class="flex items-center text-gold-500">
+                                    <i class="fas fa-star"></i>
+                                    <span class="ml-1 text-navy-700">4.6</span>
+                                </div>
+                            </div>
+                            <p class="text-navy-500 text-sm mb-4">Relax on pristine beaches and snorkel in crystal clear waters of Sri Lanka's east coast.</p>
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <span class="text-xs text-navy-500">Duration</span>
+                                    <p class="text-sm font-medium text-navy-700"><i class="fas fa-clock text-gold-500 mr-1"></i> 4 Days / 3 Nights</p>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-navy-500">Group Size</span>
+                                    <p class="text-sm font-medium text-navy-700"><i class="fas fa-users text-gold-500 mr-1"></i> Max 10</p>
+                                </div>
+                            </div>
+                            <div class="border-t border-navy-100 pt-4 flex justify-between items-center">
+                                <div>
+                                    <span class="text-xs text-navy-500">From</span>
+                                    <p class="text-lg font-bold text-navy-900">$382 <span class="text-sm font-normal text-navy-400 relative inline-block before:content-[''] before:absolute before:left-0 before:top-1/2 before:w-full before:h-[2px] before:bg-red-500 before:transform before:-translate-y-1/2 before:-rotate-5 ml-1">$450</span></p>
+                                </div>
+                                <a href="/tour-details" class="text-yellow-600 hover:text-gold-700 font-medium flex items-center text-sm">
+                                    View Details <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="mt-12 flex justify-center">
+                    <nav class="inline-flex rounded-md shadow">
+                        <a href="#" class="px-4 py-2 rounded-l-md border border-navy-200 bg-white text-navy-700 hover:bg-navy-50">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                        <a href="#" class="px-4 py-2 border-t border-b border-navy-200 bg-gold-500 text-navy-900 font-medium">1</a>
+                        <a href="#" class="px-4 py-2 border-t border-b border-navy-200 bg-white text-navy-700 hover:bg-navy-50">2</a>
+                        <a href="#" class="px-4 py-2 border-t border-b border-navy-200 bg-white text-navy-700 hover:bg-navy-50">3</a>
+                        <a href="#" class="px-4 py-2 border-t border-b border-navy-200 bg-white text-navy-700 hover:bg-navy-50">4</a>
+                        <a href="#" class="px-4 py-2 rounded-r-md border border-navy-200 bg-white text-navy-700 hover:bg-navy-50">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="py-20 bg-navy-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-sm font-semibold tracking-wider text-yellow-600 uppercase">Why Choose Us</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mt-2 mb-4">The TAPROBANE DIARIES<span class="bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-yellow-600">Difference</span></h2>
+                    <p class="text-navy-600">We go beyond the ordinary to create extraordinary travel experiences</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-sm border border-navy-100">
+                        <div class="w-14 h-14 bg-gold-100 rounded-full flex items-center justify-center mb-6 text-yellow-600">
+                            <i class="fas fa-map-marked-alt text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 mb-3">Local Expertise</h3>
+                        <p class="text-navy-600">Our guides are born and raised in Sri Lanka, offering authentic insights you won't find in guidebooks.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-sm border border-navy-100">
+                        <div class="w-14 h-14 bg-gold-100 rounded-full flex items-center justify-center mb-6 text-yellow-600">
+                            <i class="fas fa-heart text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 mb-3">Responsible Travel</h3>
+                        <p class="text-navy-600">We support local communities and eco-friendly practices to preserve Sri Lanka's beauty for future generations.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-sm border border-navy-100">
+                        <div class="w-14 h-14 bg-gold-100 rounded-full flex items-center justify-center mb-6 text-yellow-600">
+                            <i class="fas fa-concierge-bell text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-navy-900 mb-3">Personalized Service</h3>
+                        <p class="text-navy-600">From dietary needs to special occasions, we tailor every detail to make your journey uniquely yours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-gradient-to-r from-navy-800 to-navy-700 text-white">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Need Help Choosing a Tour?</h2>
+                <p class="text-xl max-w-2xl mx-auto mb-8">Our travel experts are ready to help you find the perfect
+                    itinerary for your Sri Lankan adventure.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button
+                        class="gold-button px-8 py-3 font-semibold rounded-full transition-all duration-300 shadow-lg">
+                        Contact Our Team </button>
+                    <button
+                        class="px-8 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all duration-300">
+                        <i class="fas fa-phone-alt mr-2 text-yellow-600"></i> +94 11 234 5678 </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<?php 
+  require_once ('layouts/footer.php');
+?>
+
+    <script>
+        $(document).ready(function () {
+            // Mobile menu toggle
+            $('#menu-toggle').click(function () {
+                $('#mobile-menu').toggleClass('hidden');
+                $(this).find('i').toggleClass('fa-bars fa-times');
+            });
+
+            // Close mobile menu when clicking outside
+            $(document).click(function (e) {
+                if (!$(e.target).closest('#menu-toggle, #mobile-menu').length) {
+                    $('#mobile-menu').addClass('hidden');
+                    $('#menu-toggle i').removeClass('fa-times').addClass('fa-bars');
+                }
+            });
+
+            // Navbar scroll effect
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('header').addClass('shadow-lg bg-navy-900/95 backdrop-blur-sm');
+                    $('header').removeClass('bg-opacity-30');
+                } else {
+                    $('header').removeClass('shadow-lg bg-navy-900/95 backdrop-blur-sm');
+                    $('header').addClass('bg-opacity-30');
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            $('a[href*="#"]').on('click', function (e) {
+                e.preventDefault();
+
+                $('html, body').animate(
+                    {
+                        scrollTop: $($(this).attr('href')).offset().top - 80,
+                    },
+                    500,
+                    'linear'
+                );
+            });
+        });
+    </script>
+</body>
+</html>
