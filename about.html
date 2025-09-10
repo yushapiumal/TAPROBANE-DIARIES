@@ -1,508 +1,695 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us - TAPROBANE DIARIES</title>
     <link rel="icon" type="image/x-icon" href="assets/images/logo.jpeg" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: {
-                            50: '#f0f4f8',
-                            100: '#d9e2ec',
-                            200: '#bcccdc',
-                            300: '#9fb3c8',
-                            400: '#829ab1',
-                            500: '#627d98',
-                            600: '#486581',
-                            700: '#334e68',
-                            800: '#243b53',
-                            900: '#102a43',
-                        },
-                        gold: {
-                            100: '#fdf4d9',
-                            200: '#fae8b3',
-                            300: '#f7dd8d',
-                            400: '#f5d167',
-                            500: '#f2c641',
-                            600: '#e6b422',
-                            700: '#c99a0e',
-                            800: '#a37f0b',
-                            900: '#7d6508',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 1s ease-in-out',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: {
+                50: "#f0f4f8",
+                100: "#d9e2ec",
+                200: "#bcccdc",
+                300: "#9fb3c8",
+                400: "#829ab1",
+                500: "#627d98",
+                600: "#486581",
+                700: "#334e68",
+                800: "#243b53",
+                900: "#102a43",
+              },
+              gold: {
+                100: "#fdf4d9",
+                200: "#fae8b3",
+                300: "#f7dd8d",
+                400: "#f5d167",
+                500: "#f2c641",
+                600: "#e6b422",
+                700: "#c99a0e",
+                800: "#a37f0b",
+                900: "#7d6508",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            animation: {
+              "fade-in": "fadeIn 1s ease-in-out",
+              float: "float 6s ease-in-out infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+            },
+          },
+        },
+      };
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(90deg, #f2c641, #e6b422);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .hero-gradient {
-            background: linear-gradient(135deg, rgba(16, 42, 67, 0.9) 0%, rgba(48, 79, 111, 0.9) 100%);
-        }
-        
-        .destination-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
-        }
-        
-        .nav-link {
-            position: relative;
-        }
-        
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #f2c641;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover:after {
-            width: 100%;
-        }
-        
-        .gallery-image {
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-image:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
-        
-        .gold-button {
-            background: linear-gradient(135deg, #f2c641, #e6b422);
-            color: #102a43;
-            font-weight: 600;
-        }
-        
-        .gold-button:hover {
-            background: linear-gradient(135deg, #e6b422, #c99a0e);
-            transform: translateY(-2px);
-        }
-        
-        .navy-section {
-            background-color: #102a43;
-            color: white;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-        /* Mobile Menu Overlay and Animation */
-        .mobile-menu-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            z-index: 1998;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
+      body {
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+      }
 
-        .mobile-menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+      .gradient-text {
+        background: linear-gradient(90deg, #f2c641, #e6b422);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
 
-        .mobile-menu-sidebar {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 280px;
-            height: 100vh;
-            background: #000000;
-            z-index: 9999;
-            transition: left 0.3s ease;
-            overflow-y: auto;
-        }
+      .hero-gradient {
+        background: linear-gradient(
+          135deg,
+          rgba(16, 42, 67, 0.9) 0%,
+          rgba(48, 79, 111, 0.9) 100%
+        );
+      }
 
-        .mobile-menu-sidebar.active {
-            left: 0;
-        }
+      .destination-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2),
+          0 10px 10px -5px rgba(0, 0, 0, 0.1);
+      }
 
-        .mobile-menu-content {
-            padding: 20px;
-            background: transparent;
-        }
+      .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15),
+          0 4px 6px -2px rgba(0, 0, 0, 0.1);
+      }
 
-        .mobile-menu-item {
-            display: block;
-            padding: 15px;
-            color: white !important;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            margin-bottom: 5px;
-            border-radius: 8px;
-        }
+      .nav-link {
+        position: relative;
+      }
 
-        .mobile-menu-item:hover {
-            color: #10b981 !important;
-            background: rgba(255, 255, 255, 0.2);
-        }
+      .nav-link:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #f2c641;
+        transition: width 0.3s ease;
+      }
 
-        .mobile-menu-item i {
-            color: #10b981;
-        }
+      .nav-link:hover:after {
+        width: 100%;
+      }
 
-        .mobile-menu-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-            z-index: 10000;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
+      .gallery-image {
+        transition: all 0.3s ease;
+      }
 
-        .mobile-menu-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
+      .gallery-image:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+      }
 
-        /* WhatsApp Icon Styles */
-        .whatsapp-icon {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            z-index: 9999;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            text-decoration: none;
-        }
+      .gold-button {
+        background: linear-gradient(135deg, #f2c641, #e6b422);
+        color: #102a43;
+        font-weight: 600;
+      }
 
-        .whatsapp-icon:hover {
-            background: #128c7e;
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-        }
+      .gold-button:hover {
+        background: linear-gradient(135deg, #e6b422, #c99a0e);
+        transform: translateY(-2px);
+      }
 
-        .whatsapp-icon::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border: 2px solid #25d366;
-            border-radius: 50%;
-            opacity: 0;
-            animation: pulse 2s infinite;
-        }
+      .navy-section {
+        background-color: #102a43;
+        color: white;
+      }
 
-        @keyframes pulse {
-            0% {
-                opacity: 0;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.1);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(1.2);
-            }
-        }
+      /* Mobile Menu Overlay and Animation */
+      .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 1998;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
 
-        @keyframes scroll-bidirectional {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(-50%); }
-            100% { transform: translateX(0); }
+      .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .mobile-menu-sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        height: 100vh;
+        background: #000000;
+        z-index: 9999;
+        transition: left 0.3s ease;
+        overflow-y: auto;
+      }
+
+      .mobile-menu-sidebar.active {
+        left: 0;
+      }
+
+      .mobile-menu-content {
+        padding: 20px;
+        background: transparent;
+      }
+
+      .mobile-menu-item {
+        display: block;
+        padding: 15px;
+        color: white !important;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        margin-bottom: 5px;
+        border-radius: 8px;
+      }
+
+      .mobile-menu-item:hover {
+        color: #10b981 !important;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .mobile-menu-item i {
+        color: #10b981;
+      }
+
+      .mobile-menu-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+        z-index: 10000;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-menu-close:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: scale(1.1);
+      }
+
+      /* WhatsApp Icon Styles */
+      .whatsapp-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #25d366;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        z-index: 9999;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        text-decoration: none;
+      }
+
+      .whatsapp-icon:hover {
+        background: #128c7e;
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+      }
+
+      .whatsapp-icon::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 2px solid #25d366;
+        border-radius: 50%;
+        opacity: 0;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 0;
+          transform: scale(1);
         }
-        .animate-scroll-bidirectional {
-            display: flex;
-            width: calc(100% * 2);
-            animation: scroll10s linear infinite;
+        50% {
+          opacity: 1;
+          transform: scale(1.1);
         }
-        .animate-scroll-bidirectional:hover {
-            animation-play-state: paused;
+        100% {
+          opacity: 0;
+          transform: scale(1.2);
         }
+      }
+
+      @keyframes scroll-bidirectional {
+        0% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      .animate-scroll-bidirectional {
+        display: flex;
+        width: calc(100% * 2);
+        animation: scroll10s linear infinite;
+      }
+      .animate-scroll-bidirectional:hover {
+        animation-play-state: paused;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header Section -->
-    <header class="fixed top-0 left-0 w-full bg-navy-900 bg-opacity-30 z-50 transition-all duration-300">
-        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-            <a href="/" class="flex items-center">
-                <img src="assets/images/logo.jpeg" alt="TAPROBANE DIARIES Logo" class="h-12">
-                <span class="ml-3 text-xl font-bold text-white">TAPROBANE DIARIES</span>
-            </a>
-            <!-- <nav class="hidden md:flex space-x-8">
-                <a href="/" class="nav-link text-white hover:text-gold-500">Home</a>
-                <a href="/tours" class="nav-link text-white hover:text-gold-500">Tours</a>
-                <a href="/about-us" class="nav-link text-white hover:text-gold-500">About Us</a>
-                <a href="/contact" class="nav-link text-white hover:text-gold-500">Contact</a>
-            </nav> -->
-            <button id="menu-toggle" class="md:hidden hamburger-icon">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
-        </div>
+    <header
+      class="fixed top-0 left-0 w-full bg-navy-900 bg-opacity-30 z-50 transition-all duration-300"
+    >
+      <div
+        class="container mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <a href="/" class="flex items-center">
+          <img
+            src="assets/images/logo.jpeg"
+            alt="TAPROBANE DIARIES Logo"
+            class="h-12"
+          />
+          <span class="ml-3 text-xl font-bold text-white"
+            >TAPROBANE DIARIES</span
+          >
+        </a>
+        <button id="menu-toggle" class="md:hidden hamburger-icon">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
     </header>
-
-    <!-- Mobile Menu -->
-    <!-- <div class="mobile-menu-overlay" id="mobile-menu-overlay">
-        <div class="mobile-menu-sidebar" id="mobile-menu-sidebar">
-            <button class="mobile-menu-close">&times;</button>
-            <div class="mobile-menu-content">
-                <a href="/" class="mobile-menu-item"><i class="fas fa-home mr-2"></i>Home</a>
-                <a href="/tours" class="mobile-menu-item"><i class="fas fa-map-marked-alt mr-2"></i>Tours</a>
-                <a href="/about-us" class="mobile-menu-item"><i class="fas fa-info-circle mr-2"></i>About Us</a>
-                <a href="/contact" class="mobile-menu-item"><i class="fas fa-envelope mr-2"></i>Contact</a>
-            </div>
-        </div>
-    </div> -->
 
     <!-- WhatsApp Icon -->
     <a href="https://wa.me/94112345678" class="whatsapp-icon" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+      <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Hero Section with Typed Animation -->
-    <section class="relative bg-cover bg-center h-80 mt-24" style="background-image: url('assets/images/adam-peak.webp');">
-        <div class="absolute inset-0 bg-gradient-to-r from-navy-900/90 via-navy-900/40 to-transparent flex items-center justify-center">
-            <div class="container mx-auto px-4 text-left text-white">
-                <h1 id="who-we-are" class="text-3xl md:text-5xl font-bold mb-4"></h1>
-                <p class="text-xl text-yellow-500 max-w-2xl mb-4">Discover the story behind our passion for sharing Sri Lanka's wonders</p>
-                <nav class="text-sm font-medium">
-                    <a href="/" class="text-gold-400 hover:text-gold-500 underline">Home</a>
-                    <span class="mx-2 text-gold-400">></span>
-                    <span class="text-white">About Us</span>
-                </nav>
-            </div>
+    <section
+      class="relative bg-cover bg-center h-80 mt-24"
+      style="background-image: url('assets/images/other/about.PNG')"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-navy-900/90 via-navy-900/40 to-transparent flex items-center justify-center"
+      >
+        <div class="container mx-auto px-4 text-left text-white">
+          <h1 id="who-we-are" class="text-3xl md:text-5xl font-bold mb-4"></h1>
+          <p class="text-xl text-yellow-500 max-w-2xl mb-4">
+            Discover the story behind our passion for sharing Sri Lanka's
+            wonders
+          </p>
+          <nav class="text-sm font-medium">
+            <a href="/" class="text-gold-400 hover:text-gold-500 underline"
+              >Home</a
+            >
+            <span class="mx-2 text-gold-400">></span>
+            <span class="text-white">About Us</span>
+          </nav>
         </div>
+      </div>
     </section>
 
     <!-- Main Content -->
     <main>
-        <!-- Introduction Section -->
-        <section class="py-16 bg-navy-100">
-            <div class="container mx-auto px-4">
-                <div class="max-w-4xl mx-auto text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mb-6">Our Story</h2>
-                    <div class="prose text-navy-600 text-lg">
-                        <p class="mb-4">At TAPROBANE DIARIES, we are more than just a travel company—we are storytellers, adventurers, and ambassadors of Sri Lanka's rich heritage and natural beauty. Founded with a deep love for this enchanting island, our mission is to create unforgettable travel experiences that connect you with the heart and soul of Sri Lanka.</p>
-                        <p class="mb-4">Our team is dedicated to crafting personalized journeys that showcase the island's diverse landscapes, vibrant culture, and warm hospitality. From the ancient ruins of Anuradhapura to the pristine beaches of Mirissa, we design tours that cater to every traveler's dreams, whether you're seeking adventure, relaxation, or cultural immersion.</p>
-                        <p class="mb-4">With years of expertise and a commitment to sustainable tourism, we ensure that every trip supports local communities and preserves the natural beauty of Sri Lanka for future generations. Join us to explore the island we call home and create memories that last a lifetime.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <!-- Introduction Section -->
+      <section class="py-16 bg-navy-100">
+        <div class="container mx-auto px-4">
+          <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mb-6">
+              Our Story
+            </h2>
+            <div class="prose text-navy-600 text-lg">
+              <p class="mb-4">
+                At TAPROBANE DIARIES,where your dream destinations become
+                unforgettable memories! We're passionate about crafting
+                personalized travel experiences that go beyond expectations.
+              </p>
+              <p class="mb-4">
+                <span class="font-bold">
+                  Founded in 2014, Taprobane Diaries is a proudly Sri Lankan
+                  travel agency
+                </span>
+                born from a deep love for exploration, culture, and meaningful
+                connections. What started as a small passion project has grown
+                into a trusted name in the travel industry - offering
+                personalized, unforgettable journeys across the island and
+                beyond.
+              </p>
 
-        <!-- Vision and Mission Section -->
-        <section class="py-16 bg-navy-50">
-            <div class="container mx-auto px-4">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <span class="text-sm font-semibold tracking-wider text-yellow-600 uppercase">Our Purpose</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mt-2 mb-4">Our Vision & Mission</h2>
-                    <p class="text-navy-600">Guiding principles that shape every journey we create</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white p-8 rounded-xl shadow-sm border border-navy-100">
-                        <div class="w-14 h-14 bg-gold-100 rounded-full flex items-center justify-center mb-6 text-yellow-600">
-                            <i class="fas fa-eye text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 mb-3">Our Vision</h3>
-                        <p class="text-navy-600">To be the leading travel company in Sri Lanka, inspiring travelers worldwide to discover the island's beauty, culture, and heritage through authentic and sustainable experiences.</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-xl shadow-sm border border-navy-100">
-                        <div class="w-14 h-14 bg-gold-100 rounded-full flex items-center justify-center mb-6 text-yellow-600">
-                            <i class="fas fa-compass text-2xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-navy-900 mb-3">Our Mission</h3>
-                        <p class="text-navy-600">To craft personalized, immersive, and responsible travel experiences that connect visitors with Sri Lanka's rich history, diverse landscapes, and vibrant communities.</p>
-                    </div>
-                </div>
+              <p class="mb-4">
+                From the misty hills of Ella to the sun-kissed beaches of
+                Trincomalee, from ancient ruins in Anuradhapura to vibrant
+                street markets in Colombo -<span class="font-bold">
+                  we don’t just plan trips, we craft travel stories.</span
+                >
+                Every journey with us is a page in your personal travel diary,
+                filled with rich experiences, local insights, and moments that
+                stay with you for a lifetime.
+              </p>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- What We Offer Section -->
-        <section class="py-16 bg-navy-100">
-            <div class="container mx-auto px-4">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <span class="text-sm font-semibold tracking-wider text-yellow-600 uppercase">What We Offer</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mt-2 mb-4">Great Opportunity for Adventure & Travels</h2>
-                    <p class="text-navy-600">Explore the diverse experiences we bring to every traveler</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Offer 1 -->
-                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl">
-                        <div class="relative overflow-hidden h-48 animate-scroll-bidirectional [animation-duration:15s]">
-                            <img src="assets/images/ahangama.webp" alt="Cultural Immersion" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-navy-900 mb-2">Cultural Immersion</h3>
-                            <p class="text-navy-600 text-sm">Dive into Sri Lanka's rich heritage with visits to ancient temples, UNESCO sites, and vibrant festivals.</p>
-                        </div>
-                    </div>
-                    <!-- Offer 2 -->
-                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl">
-                        <div class="relative overflow-hidden h-48 animate-scroll-bidirectional [animation-duration:15s]">
-                            <img src="assets/images/adventure.webp" alt="Adventure Activities" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-navy-900 mb-2">Adventure Activities</h3>
-                            <p class="text-navy-600 text-sm">Experience thrilling safaris, hiking in lush hills, and water sports along pristine coasts.</p>
-                        </div>
-                    </div>
-                    <!-- Offer 3 -->
-                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl">
-                        <div class="relative overflow-hidden h-48 animate-scroll-bidirectional [animation-duration:15s]">
-                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Relaxation & Luxury" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-navy-900 mb-2">Relaxation & Luxury</h3>
-                            <p class="text-navy-600 text-sm">Unwind in boutique resorts and serene beaches with personalized, luxurious experiences.</p>
-                        </div>
-                    </div>
-                </div>
+      <!-- Vision and Mission Section -->
+      <section class="py-16 bg-navy-50">
+        <div class="container mx-auto px-4">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <span
+              class="text-sm font-semibold tracking-wider text-yellow-600 uppercase"
+              >Our Purpose</span
+            >
+            <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mt-2 mb-4">
+              Our Vision & Mission
+            </h2>
+            <p class="text-navy-600">
+              Guiding principles that shape every journey we create
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div
+              class="bg-white p-8 rounded-xl shadow-sm border border-navy-100"
+            >
+              <div
+                class="w-14 h-14 bg-gold-100 rounded-full flex items-center justify-center mb-6 text-yellow-600"
+              >
+                <i class="fas fa-eye text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-navy-900 mb-3">Our Vision</h3>
+              <p class="text-navy-600">
+                To be the leading travel company in Sri Lanka, inspiring
+                travelers worldwide to discover the island's beauty, culture,
+                and heritage through authentic and sustainable experiences.
+              </p>
             </div>
-        </section>
+            <div
+              class="bg-white p-8 rounded-xl shadow-sm border border-navy-100"
+            >
+              <div
+                class="w-14 h-14 bg-gold-100 rounded-full flex items-center justify-center mb-6 text-yellow-600"
+              >
+                <i class="fas fa-compass text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-bold text-navy-900 mb-3">Our Mission</h3>
+              <p class="text-navy-600">
+                To craft personalized, immersive, and responsible travel
+                experiences that connect visitors with Sri Lanka's rich history,
+                diverse landscapes, and vibrant communities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- Our Team Section -->
-        <section class="py-16 bg-navy-50">
-            <div class="container mx-auto px-4">
-                <div class="text-center max-w-3xl mx-auto mb-12">
-                    <span class="text-sm font-semibold tracking-wider text-yellow-600 uppercase">Meet Our Team</span>
-                    <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mt-2 mb-4">The Heart of TAPROBANE DIARIES</h2>
-                    <p class="text-navy-600">Our passionate team brings Sri Lanka to life</p>
-                </div>
-                <div class="flex flex-col md:flex-row gap-8 overflow-x-auto">
-                    <!-- Team Member 1 -->
-                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl min-w-[280px]">
-                        <div class="relative overflow-hidden h-48">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Nimal Perera" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-navy-900 mb-2">Nimal Perera</h3>
-                            <p class="text-navy-500 text-sm mb-4">Founder & Lead Guide</p>
-                            <p class="text-navy-600 text-sm">With over 15 years of experience, Nimal crafts unforgettable journeys, sharing his deep knowledge of Sri Lanka's culture and history.</p>
-                        </div>
-                    </div>
-                    <!-- Team Member 2 -->
-                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl min-w-[280px]">
-                        <div class="relative overflow-hidden h-48">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Sanjika Fernando" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-navy-900 mb-2">Sanjika Fernando</h3>
-                            <p class="text-navy-500 text-sm mb-4">Travel Consultant</p>
-                            <p class="text-navy-600 text-sm">Sanjika ensures every itinerary is tailored to your preferences, making your Sri Lankan adventure seamless and memorable.</p>
-                        </div>
-                    </div>
-                    <!-- Team Member 3 -->
-                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl min-w-[280px]">
-                        <div class="relative overflow-hidden h-48">
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Lakmal Silva" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-navy-900 mb-2">Lakmal Silva</h3>
-                            <p class="text-navy-500 text-sm mb-4">Wildlife Expert</p>
-                            <p class="text-navy-600 text-sm">Lakmal's passion for Sri Lanka's biodiversity brings thrilling safari experiences to life in Yala and Sinharaja.</p>
-                        </div>
-                    </div>
-                    <!-- Team Member 4 -->
-                    <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl min-w-[280px]">
-                        <div class="relative overflow-hidden h-48">
-                            <img src="https://images.unsplash.com/photo-1534528741775-539b6e3c9f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Amara Wijesinghe" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-6 text-center">
-                            <h3 class="text-xl font-bold text-navy-900 mb-2">Amara Wijesinghe</h3>
-                            <p class="text-navy-500 text-sm mb-4">Cultural Specialist</p>
-                            <p class="text-navy-600 text-sm">Amara brings Sri Lanka's rich traditions to life, guiding you through ancient cities and vibrant cultural festivals.</p>
-                        </div>
-                    </div>
-                </div>
+      <!-- What We Offer Section -->
+      <section class="py-16 bg-navy-100">
+        <div class="container mx-auto px-4">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <span
+              class="text-sm font-semibold tracking-wider text-yellow-600 uppercase"
+              >What We Offer</span
+            >
+            <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mt-2 mb-4">
+              Great Opportunity for Adventure & Travels
+            </h2>
+            <p class="text-navy-600">
+              Explore the diverse experiences we bring to every traveler
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Offer 1 -->
+            <div
+              class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl"
+            >
+              <div
+                class="relative overflow-hidden h-48 animate-scroll-bidirectional [animation-duration:15s]"
+              >
+                <img
+                  src="assets/images/ahangama.webp"
+                  alt="Cultural Immersion"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-navy-900 mb-2">
+                  Cultural Immersion
+                </h3>
+                <p class="text-navy-600 text-sm">
+                  Dive into Sri Lanka's rich heritage with visits to ancient
+                  temples, UNESCO sites, and vibrant festivals.
+                </p>
+              </div>
             </div>
-        </section>
+            <!-- Offer 2 -->
+            <div
+              class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl"
+            >
+              <div
+                class="relative overflow-hidden h-48 animate-scroll-bidirectional [animation-duration:15s]"
+              >
+                <img
+                  src="assets/images/adventure.webp"
+                  alt="Adventure Activities"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-navy-900 mb-2">
+                  Adventure Activities
+                </h3>
+                <p class="text-navy-600 text-sm">
+                  Experience thrilling safaris, hiking in lush hills, and water
+                  sports along pristine coasts.
+                </p>
+              </div>
+            </div>
+            <!-- Offer 3 -->
+            <div
+              class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl"
+            >
+              <div
+                class="relative overflow-hidden h-48 animate-scroll-bidirectional [animation-duration:15s]"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                  alt="Relaxation & Luxury"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-navy-900 mb-2">
+                  Relaxation & Luxury
+                </h3>
+                <p class="text-navy-600 text-sm">
+                  Unwind in boutique resorts and serene beaches with
+                  personalized, luxurious experiences.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- Contact Us Section -->
-        <section class="py-20 bg-gradient-to-r from-navy-800 to-navy-700 text-white">
-            <div class="container mx-auto px-4 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Get in Touch</h2>
-                <p class="text-xl max-w-2xl mx-auto mb-8">Have questions or ready to plan your Sri Lankan adventure? Our team is here to help.</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="/contact" class="gold-button px-8 py-3 font-semibold rounded-full transition-all duration-300 shadow-lg">
-                        Contact Us
-                    </a>
-                    <a href="tel:+94112345678" class="px-8 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all duration-300">
-                        <i class="fas fa-phone-alt mr-2 text-yellow-600"></i> +94 11 234 5678
-                    </a>
-                </div>
-                <div class="mt-8 text-navy-200">
-                    <p>Email: <a href="mailto:info@taprobane-diaries.com" class="underline hover:text-gold-500">info@taprobane-diaries.com</a></p>
-                    <p>Address: 123 Galle Road, Colombo 03, Sri Lanka</p>
-                </div>
+      <!-- Our Team Section -->
+      <section class="py-16 bg-navy-50">
+        <div class="container mx-auto px-4">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <span
+              class="text-sm font-semibold tracking-wider text-yellow-600 uppercase"
+              >Meet Our Team</span
+            >
+            <h2 class="text-3xl md:text-4xl font-bold text-navy-900 mt-2 mb-4">
+              The Heart of TAPROBANE DIARIES
+            </h2>
+            <p class="text-navy-600">
+              Our passionate team brings Sri Lanka to life
+            </p>
+          </div>
+          <div class="flex flex-col md:flex-row gap-8 overflow-x-auto">
+            <!-- Team Member 1 -->
+            <div
+              class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl min-w-[280px]"
+            >
+              <div class="relative overflow-hidden h-48">
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                  alt="Nimal Perera"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-navy-900 mb-2">
+                  Nimal Perera
+                </h3>
+                <p class="text-navy-500 text-sm mb-4">Founder & Lead Guide</p>
+                <p class="text-navy-600 text-sm">
+                  With over 15 years of experience, Nimal crafts unforgettable
+                  journeys, sharing his deep knowledge of Sri Lanka's culture
+                  and history.
+                </p>
+              </div>
             </div>
-        </section>
+            <!-- Team Member 2 -->
+            <div
+              class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl min-w-[280px]"
+            >
+              <div class="relative overflow-hidden h-48">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                  alt="Sanjika Fernando"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-navy-900 mb-2">
+                  Sanjika Fernando
+                </h3>
+                <p class="text-navy-500 text-sm mb-4">Travel Consultant</p>
+                <p class="text-navy-600 text-sm">
+                  Sanjika ensures every itinerary is tailored to your
+                  preferences, making your Sri Lankan adventure seamless and
+                  memorable.
+                </p>
+              </div>
+            </div>
+            <!-- Team Member 3 -->
+            <div
+              class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl min-w-[280px]"
+            >
+              <div class="relative overflow-hidden h-48">
+                <img
+                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                  alt="Lakmal Silva"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-navy-900 mb-2">
+                  Lakmal Silva
+                </h3>
+                <p class="text-navy-500 text-sm mb-4">Wildlife Expert</p>
+                <p class="text-navy-600 text-sm">
+                  Lakmal's passion for Sri Lanka's biodiversity brings thrilling
+                  safari experiences to life in Yala and Sinharaja.
+                </p>
+              </div>
+            </div>
+            <!-- Team Member 4 -->
+            <div
+              class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 border border-navy-100 hover:-translate-y-2 hover:shadow-xl min-w-[280px]"
+            >
+              <div class="relative overflow-hidden h-48">
+                <img
+                  src="https://images.unsplash.com/photo-1534528741775-539b6e3c9f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                  alt="Amara Wijesinghe"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6 text-center">
+                <h3 class="text-xl font-bold text-navy-900 mb-2">
+                  Amara Wijesinghe
+                </h3>
+                <p class="text-navy-500 text-sm mb-4">Cultural Specialist</p>
+                <p class="text-navy-600 text-sm">
+                  Amara brings Sri Lanka's rich traditions to life, guiding you
+                  through ancient cities and vibrant cultural festivals.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Us Section -->
+      <section
+        class="py-20 bg-gradient-to-r from-navy-800 to-navy-700 text-white"
+      >
+        <div class="container mx-auto px-4 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Get in Touch</h2>
+          <p class="text-xl max-w-2xl mx-auto mb-8">
+            Have questions or ready to plan your Sri Lankan adventure? Our team
+            is here to help.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/contact"
+              class="gold-button px-8 py-3 font-semibold rounded-full transition-all duration-300 shadow-lg"
+            >
+              Contact Us
+            </a>
+            <a
+              href="tel:+94112345678"
+              class="px-8 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full transition-all duration-300"
+            >
+              <i class="fas fa-phone-alt mr-2 text-yellow-600"></i> +94 11 234
+              5678
+            </a>
+          </div>
+          <div class="mt-8 text-navy-200">
+            <p>
+              Email:
+              <a
+                href="mailto:info@taprobane-diaries.com"
+                class="underline hover:text-gold-500"
+                >info@taprobane-diaries.com</a
+              >
+            </p>
+            <p>Address: 123 Galle Road, Colombo 03, Sri Lanka</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <?php 
@@ -510,63 +697,67 @@
     ?>
 
     <script>
-        $(document).ready(function () {
-            // Mobile menu toggle
-            $('#menu-toggle').click(function () {
-                $('#mobile-menu-overlay').toggleClass('active');
-                $('#mobile-menu-sidebar').toggleClass('active');
-                $(this).toggleClass('active');
-            });
-
-            // Close mobile menu
-            $('.mobile-menu-close').click(function () {
-                $('#mobile-menu-overlay').removeClass('active');
-                $('#mobile-menu-sidebar').removeClass('active');
-                $('#menu-toggle').removeClass('active');
-            });
-
-            // Close mobile menu when clicking outside
-            $(document).click(function (e) {
-                if (!$(e.target).closest('#menu-toggle, #mobile-menu-sidebar').length) {
-                    $('#mobile-menu-overlay').removeClass('active');
-                    $('#mobile-menu-sidebar').removeClass('active');
-                    $('#menu-toggle').removeClass('active');
-                }
-            });
-
-            // Navbar scroll effect
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 50) {
-                    $('header').addClass('shadow-lg bg-navy-900/95 backdrop-blur-sm');
-                    $('header').removeClass('bg-opacity-30');
-                } else {
-                    $('header').removeClass('shadow-lg bg-navy-900/95 backdrop-blur-sm');
-                    $('header').addClass('bg-opacity-30');
-                }
-            });
-
-            // Smooth scrolling for anchor links
-            $('a[href*="#"]').on('click', function (e) {
-                e.preventDefault();
-                $('html, body').animate(
-                    {
-                        scrollTop: $($(this).attr('href')).offset().top - 80,
-                    },
-                    500,
-                    'linear'
-                );
-            });
-
-            // Typed.js for "Who We Are" heading in hero section
-            var typed = new Typed('#who-we-are', {
-                strings: ['Who We Are...'],
-                typeSpeed: 100,
-                backSpeed: 50,
-                startDelay: 500,
-                backDelay: 2000,
-                loop: true
-            });
+      $(document).ready(function () {
+        // Mobile menu toggle
+        $("#menu-toggle").click(function () {
+          $("#mobile-menu-overlay").toggleClass("active");
+          $("#mobile-menu-sidebar").toggleClass("active");
+          $(this).toggleClass("active");
         });
+
+        // Close mobile menu
+        $(".mobile-menu-close").click(function () {
+          $("#mobile-menu-overlay").removeClass("active");
+          $("#mobile-menu-sidebar").removeClass("active");
+          $("#menu-toggle").removeClass("active");
+        });
+
+        // Close mobile menu when clicking outside
+        $(document).click(function (e) {
+          if (
+            !$(e.target).closest("#menu-toggle, #mobile-menu-sidebar").length
+          ) {
+            $("#mobile-menu-overlay").removeClass("active");
+            $("#mobile-menu-sidebar").removeClass("active");
+            $("#menu-toggle").removeClass("active");
+          }
+        });
+
+        // Navbar scroll effect
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 50) {
+            $("header").addClass("shadow-lg bg-navy-900/95 backdrop-blur-sm");
+            $("header").removeClass("bg-opacity-30");
+          } else {
+            $("header").removeClass(
+              "shadow-lg bg-navy-900/95 backdrop-blur-sm"
+            );
+            $("header").addClass("bg-opacity-30");
+          }
+        });
+
+        // Smooth scrolling for anchor links
+        $('a[href*="#"]').on("click", function (e) {
+          e.preventDefault();
+          $("html, body").animate(
+            {
+              scrollTop: $($(this).attr("href")).offset().top - 80,
+            },
+            500,
+            "linear"
+          );
+        });
+
+        // Typed.js for "Who We Are" heading in hero section
+        var typed = new Typed("#who-we-are", {
+          strings: ["Who We Are..."],
+          typeSpeed: 100,
+          backSpeed: 50,
+          startDelay: 500,
+          backDelay: 2000,
+          loop: true,
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
