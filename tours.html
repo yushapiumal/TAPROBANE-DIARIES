@@ -363,8 +363,38 @@
     </style>
 </head>
 
-
+ <a href="https://wa.me/94112345678" class="whatsapp-icon" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
     <!-- Hero Section -->
+
+      <header
+      class=" bg-navy-900 bg-opacity-30 shadow-md fixed w-full z-[200] top-0"
+    >
+      <div
+        class="container mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <a href="/" class="flex items-center">
+          <img
+            src="assets/images/logo.jpeg"
+            alt="TAPROBANE DIARIES Logo"
+            class="h-12"
+          />
+          <span class="ml-3 text-xl font-bold text-white"
+            >TAPROBANE DIARIES</span
+          >
+        </a>
+        <button id="menu-toggle" class="md:hidden hamburger-icon">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </header>
+
+
+
+
     <section class="relative bg-cover bg-center h-80 mt-24" style="background-image: url('assets/images/sub-hero.webp');">
         <div class="absolute inset-0 bg-gradient-to-r from-navy-900/90 via-navy-900/40 to-transparent flex items-center justify-center">
             <div class="container mx-auto px-4 text-left text-white">
@@ -809,15 +839,15 @@
             });
 
             // Navbar scroll effect
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 50) {
-                    $('header').addClass('shadow-lg bg-navy-900/95 backdrop-blur-sm');
-                    $('header').removeClass('bg-opacity-30');
-                } else {
-                    $('header').removeClass('shadow-lg bg-navy-900/95 backdrop-blur-sm');
-                    $('header').addClass('bg-opacity-30');
-                }
-            });
+            // $(window).scroll(function () {
+            //     if ($(this).scrollTop() > 50) {
+            //         $('header').addClass('shadow-lg bg-navy-900/95 backdrop-blur-sm');
+            //         $('header').removeClass('bg-opacity-30');
+            //     } else {
+            //         $('header').removeClass('shadow-lg bg-navy-900/95 backdrop-blur-sm');
+            //         $('header').addClass('bg-opacity-30');
+            //     }
+            // });
 
             // Smooth scrolling for anchor links
             $('a[href*="#"]').on('click', function (e) {

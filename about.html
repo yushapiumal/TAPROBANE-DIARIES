@@ -308,7 +308,7 @@
   <body>
     <!-- Header Section -->
     <header
-      class="fixed top-0 left-0 w-full bg-navy-900 bg-opacity-30 z-50 transition-all duration-300"
+      class=" bg-navy-900 bg-opacity-30 shadow-md fixed w-full z-[200] top-0"
     >
       <div
         class="container mx-auto px-4 py-4 flex items-center justify-between"
@@ -723,18 +723,7 @@
           }
         });
 
-        // Navbar scroll effect
-        $(window).scroll(function () {
-          if ($(this).scrollTop() > 50) {
-            $("header").addClass("shadow-lg bg-navy-900/95 backdrop-blur-sm");
-            $("header").removeClass("bg-opacity-30");
-          } else {
-            $("header").removeClass(
-              "shadow-lg bg-navy-900/95 backdrop-blur-sm"
-            );
-            $("header").addClass("bg-opacity-30");
-          }
-        });
+
 
         // Smooth scrolling for anchor links
         $('a[href*="#"]').on("click", function (e) {
