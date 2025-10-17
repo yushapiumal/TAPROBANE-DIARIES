@@ -572,7 +572,7 @@
         </section>
 
 
-        <section id="destinations" class="py-12 bg-white">
+        <!-- <section id="destinations" class="py-12 bg-white">
     <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between items-center mb-8">
             <div class="text-center md:text-left mb-4 md:mb-0">
@@ -590,7 +590,7 @@
         </div>
         <div class="overflow-hidden">
             <div class="flex animate-scroll-bidirectional gap-6 whitespace-nowrap">
-                <!-- Original set of cards -->
+             
                 <div class="destination-card relative flex-shrink-0 w-64 h-64 bg-center bg-cover rounded-xl overflow-hidden transition-all duration-300 shadow-md"
                     style="background-image: url('assets/images/colombo.webp');">
                     <div class="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/40 to-transparent"></div>
@@ -681,7 +681,7 @@
                         View Details
                     </button>
                 </div>
-                <!-- Duplicated set of cards for seamless looping -->
+                
                 <div class="destination-card relative flex-shrink-0 w-64 h-64 bg-center bg-cover rounded-xl overflow-hidden transition-all duration-300 shadow-md"
                     style="background-image: url('assets/images/colombo.webp');">
                     <div class="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/40 to-transparent"></div>
@@ -775,7 +775,95 @@
             </div>
         </div>
     </div>
-   </section>
+   </section> -->
+
+
+<section id="tours" class="py-8 sm:py-12 md:py-16 bg-white relative overflow-hidden">
+  <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+    <div class="text-center md:text-left mb-4 md:mb-0">
+      <span class="text-sm font-semibold tracking-wider text-yellow-600 uppercase">
+        Trending Destinations
+      </span>
+      <h2 class="text-2xl md:text-3xl font-bold text-navy-900 mt-2">
+        Popular Travel <span class="gradient-text">Locations</span>
+      </h2>
+    </div>
+    <div>
+      <button
+        onclick="window.location.href='/destinations.html'"
+        class="group gold-button py-2 px-5 text-base rounded-full flex items-center transition-all duration-300 shadow-md hover:shadow-lg"
+      >
+        Explore More
+        <span
+          class="w-6 h-6 flex items-center justify-center rounded-full bg-navy-900 ml-2 transition-all duration-300 group-hover:rotate-45"
+        >
+          <i class="fas fa-arrow-right text-gold-500"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Sri Lanka map with hoverable travel spots -->
+  <div class="relative w-full max-w-4xl mx-auto">
+    <img
+      src="https://jetwingtravels.com/wp-content/uploads/2023/11/Sri-Lanka-location-map-680x1100-1.jpg"
+      alt="Sri Lanka Map"
+      class="w-full h-auto rounded-xl shadow-lg"
+    />
+
+    <!-- Location Pins -->
+    <div class="absolute top-[45%] left-[40%] group">
+      <div class="w-4 h-4 bg-yellow-500 rounded-full animate-pulse border-2 border-white cursor-pointer"></div>
+      <div class="absolute left-6 top-[-20px] hidden group-hover:block bg-white text-gray-800 p-3 rounded-lg shadow-lg w-52 text-sm">
+        <strong>Sigiriya</strong><br />
+        Ancient rock fortress and UNESCO World Heritage Site known for its frescoes.
+      </div>
+    </div>
+
+    <div class="absolute top-[55%] left-[48%] group">
+      <div class="w-4 h-4 bg-yellow-500 rounded-full animate-pulse border-2 border-white cursor-pointer"></div>
+      <div class="absolute left-6 top-[-20px] hidden group-hover:block bg-white text-gray-800 p-3 rounded-lg shadow-lg w-52 text-sm">
+        <strong>Kandy</strong><br />
+        Sacred city famous for the Temple of the Tooth and scenic lake views.
+      </div>
+    </div>
+
+    <div class="absolute top-[70%] left-[55%] group">
+      <div class="w-4 h-4 bg-yellow-500 rounded-full animate-pulse border-2 border-white cursor-pointer"></div>
+      <div class="absolute left-6 top-[-20px] hidden group-hover:block bg-white text-gray-800 p-3 rounded-lg shadow-lg w-52 text-sm">
+        <strong>Ella</strong><br />
+        Mountain village known for Nine Arches Bridge, tea plantations and hikes.
+      </div>
+    </div>
+
+    <div class="absolute top-[80%] left-[35%] group">
+      <div class="w-4 h-4 bg-yellow-500 rounded-full animate-pulse border-2 border-white cursor-pointer"></div>
+      <div class="absolute left-6 top-[-20px] hidden group-hover:block bg-white text-gray-800 p-3 rounded-lg shadow-lg w-52 text-sm">
+        <strong>Galle</strong><br />
+        Historic coastal city with colonial fort, beaches and vibrant cafes.
+      </div>
+    </div>
+
+    <div class="absolute top-[69.5%] left-[17.7%] group">
+      <div class="w-4 h-4 bg-yellow-500 rounded-full animate-pulse border-2 border-white cursor-pointer"></div>
+      <div class="absolute left-6 top-[-20px] hidden group-hover:block bg-white text-gray-800 p-3 rounded-lg shadow-lg w-52 text-sm">
+        <strong>Colombo</strong><br />
+        Capital city offering shopping, fine dining, and the Galle Face Green promenade.
+      </div>
+    </div>
+
+    <div class="absolute top-[60%] left-[52%] group">
+      <div class="w-4 h-4 bg-yellow-500 rounded-full animate-pulse border-2 border-white cursor-pointer"></div>
+      <div class="absolute left-6 top-[-20px] hidden group-hover:block bg-white text-gray-800 p-3 rounded-lg shadow-lg w-52 text-sm">
+        <strong>Nuwara Eliya</strong><br />
+        Tea country escape with cool weather, waterfalls, and colonial charm.
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
 
 <section id="tours" class="py-8 sm:py-12 md:py-16 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
