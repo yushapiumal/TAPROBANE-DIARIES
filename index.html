@@ -428,10 +428,10 @@
       <!-- CENTER/RIGHT: Navigation Links (hidden on mobile) -->
       <div class="hidden md:flex items-center space-x-4">
         <a href="#slider-container" class="text-white hover:text-green-600 smooth-scroll font-medium">Home</a>
-        <a href="#tours" class="text-white hover:text-green-600 smooth-scroll font-medium">Tours</a>
+        <a href="pagers/tours.html" class="text-white hover:text-green-600 smooth-scroll font-medium">Tours</a>
         <a href="#destinations" class="text-white hover:text-green-600 smooth-scroll font-medium">Destinations</a>
-        <a href="#about" class="text-white hover:text-green-600 smooth-scroll font-medium">About us</a>
-        <a href="#contact" class="text-white hover:text-green-600 smooth-scroll font-medium">Contact</a>
+        <a href="pagers/about_us.html" class="text-white hover:text-green-600 smooth-scroll font-medium">About us</a>
+        <a href="pagers/contact_us.html" class="text-white hover:text-green-600 font-medium">Contact</a>
       </div>
 
       <!-- Mobile Hamburger Icon -->
@@ -1478,18 +1478,18 @@
             });
 
             // Smooth Scrolling
-            document.querySelectorAll('.smooth-scroll').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+            // document.querySelectorAll('.smooth-scroll').forEach(anchor => {
+            //     anchor.addEventListener('click', function (e) {
+            //         e.preventDefault();
+            //         const targetId = this.getAttribute('href');
+            //         const targetElement = document.querySelector(targetId);
+            //         if (targetElement) {
+            //             targetElement.scrollIntoView({
+            //                 behavior: 'smooth'
+            //             });
+            //         }
+            //     });
+            // });
 
             // Inquiry Form (if exists)
             const submitInquiry = document.getElementById('submit-inquiry');

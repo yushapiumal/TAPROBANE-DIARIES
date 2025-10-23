@@ -1,496 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us - TAPROBANE DIARIES</title>
-    <link rel="icon" type="image/x-icon" href="assets/images/logo.jpeg" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSB7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAPROBANE DIARIES - Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-    />
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="https://cdn.jsdelivr.net/npm/libphonenumber-js@1.10.14/min/libphonenumber.min.js"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              black: '#000000',
-              white: '#FFFFFF',
-              gray: {
-                100: '#CCCCCC',
-                200: '#999999',
-                300: '#666666',
-                400: '#333333',
-              },
-            },
-            fontFamily: {
-              sans: ["Inter", "sans-serif"],
-            },
-            animation: {
-              'fade-in': 'fadeIn 1s ease-in-out',
-              float: 'float 6s ease-in-out infinite',
-              pulse: 'pulse 2s infinite',
-            },
-            keyframes: {
-              fadeIn: {
-                '0%': { opacity: '0' },
-                '100%': { opacity: '1' },
-              },
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-10px)' },
-              },
-              pulse: {
-                '0%': { opacity: '0', transform: 'scale(1)' },
-                '50%': { opacity: '1', transform: 'scale(1.1)' },
-                '100%': { opacity: '0', transform: 'scale(1.2)' },
-              },
-            },
-          },
-        },
-      };
-    </script>
     <style>
-      /* WhatsApp Icon Styles */
- /* WhatsApp Icon Styles */
-      .whatsapp-icon {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: #25d366;
-        color: white;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 28px;
-        z-index: 9999;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-        text-decoration: none;
-      }
-
-      .whatsapp-icon:hover {
-        background: #128c7e;
-        transform: scale(1.1);
-        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-      }
-
-      .whatsapp-icon::before {
-        content: "";
-        position: absolute;
-        top: -5px;
-        left: -5px;
-        right: -5px;
-        bottom: -5px;
-        border: 2px solid #25d366;
-        border-radius: 50%;
-        opacity: 0;
-        animation: pulse 2s infinite;
-      }
-@keyframes pulse {
-        0% {
-          opacity: 0;
-          transform: scale(1);
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
         }
-        50% {
-          opacity: 1;
-          transform: scale(1.1);
+        
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            z-index: 9999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
         }
-        100% {
-          opacity: 0;
-          transform: scale(1.2);
-        }
-      }
 
+        .whatsapp-icon:hover {
+            background: #128c7e;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-icon::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid #25d366;
+            border-radius: 50%;
+            opacity: 0;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.2);
+            }
+        }
+        
+        .yellow-bg {
+            background-color: #FACC15;
+        }
+        
+        .brown-bg {
+            background-color: #A47148;
+        }
+        
+        .green-bg {
+            background-color: #22C55E;
+        }
+        
+        .yellow-text {
+            color: #FACC15;
+        }
+        
+        .brown-text {
+            color: #A47148;
+        }
+        
+        .green-text {
+            color: #22C55E;
+        }
+        
+        .yellow-border {
+            border-color: #FACC15;
+        }
+        
+        .brown-border {
+            border-color: #A47148;
+        }
+        
+        .green-border {
+            border-color: #22C55E;
+        }
+        
+        .button-yellow {
+            background-color: #FACC15;
+            color: #000;
+        }
+        
+        .button-yellow:hover {
+            background-color: #EAB308;
+        }
+        
+        .button-brown {
+            background-color: #A47148;
+            color: #fff;
+        }
+        
+        .button-brown:hover {
+            background-color: #8B5A2F;
+        }
+        
+        .button-green {
+            background-color: #22C55E;
+            color: #fff;
+        }
+        
+        .button-green:hover {
+            background-color: #16A34A;
+        }
     </style>
- 
-     </head>
-  <body class="font-sans bg-white text-black scroll-smooth">
+</head>
+<body class="bg-white text-gray-800 scroll-smooth">
     <!-- Header Section -->
-    <header class="bg-black bg-opacity-30 shadow-md fixed w-full z-50 top-0">
-      <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="/" class="flex items-center">
-          <img src="../assets/images/logo.jpeg" alt="TAPROBANE DIARIES Logo" class="h-12" />
-        </a>
-        <nav class="hidden md:flex space-x-8">
-          <a href="/" class="relative text-white hover:text-gray-200 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-gray-300 after:transition-all after:duration-300 hover:after:w-full">Home</a>
-          <a href="/about" class="relative text-white hover:text-gray-200 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-gray-300 after:transition-all after:duration-300 hover:after:w-full">About</a>
-          <a href="/tours" class="relative text-white hover:text-gray-200 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-gray-300 after:transition-all after:duration-300 hover:after:w-full">Tours</a>
-          <a href="/contact" class="relative text-white hover:text-gray-200 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-gray-300 after:transition-all after:duration-300 hover:after:w-full">Contact</a>
-        </nav>
-        <button id="menu-toggle" class="md:hidden flex flex-col space-y-1.5">
-          <span class="block w-6 h-0.5 bg-white transition-transform duration-300"></span>
-          <span class="block w-6 h-0.5 bg-white transition-opacity duration-300"></span>
-          <span class="block w-6 h-0.5 bg-white transition-transform duration-300"></span>
-        </button>
-      </div>
+    <header class="bg-navy-900 bg-opacity-30 shadow-md fixed w-full z-[200] top-0">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="/" class="flex items-center">
+                <div class="h-12 w-12 yellow-bg rounded-full flex items-center justify-center text-black font-bold text-lg">TD</div>
+                <span class="ml-2 text-white font-bold text-xl">TAPROBANE DIARIES</span>
+            </a>
+            <!-- Menu removed as requested -->
+        </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
-    <div id="mobile-menu-sidebar" class="fixed top-0 right-0 h-full w-64 bg-black text-white p-6 z-50 transform translate-x-full transition-transform duration-300">
-      <button class="mobile-menu-close text-2xl mb-4">&times;</button>
-      <nav class="flex flex-col space-y-4">
-        <a href="/" class="relative text-white hover:text-gray-200 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-gray-300 after:transition-all after:duration-300 hover:after:w-full">Home</a>
-        <a href="/about" class="relative text-white hover:text-gray-200 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-gray-300 after:transition-all after:duration-300 hover:after:w-full">About</a>
-        <a href="/tours" class="relative text-white hover:text-gray-200 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-gray-300 after:transition-all after:duration-300 hover:after:w-full">Tours</a>
-        <a href="/contact" class="relative text-white hover:text-gray-200 after:content-[''] after:absolute after:w-0 after:h-[2px] after:bottom-0 after:left-0 after:bg-gray-300 after:transition-all after:duration-300 hover:after:w-full">Contact</a>
-      </nav>
-    </div>
-
     <!-- WhatsApp Icon -->
-  <a href="https://wa.me/94112345678" class="whatsapp-icon" target="_blank">
-      <i class="fab fa-whatsapp"></i>
+    <a href="https://wa.me/94112345678" class="whatsapp-icon" target="_blank">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Hero Section -->
-    <section class="relative bg-cover bg-center h-[400px]" style="background-image: url('https://jetwingtravels.com/wp-content/uploads/2023/10/Contact-us-v1-800x1400-1.jpg')">
-      <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent flex items-center justify-center h-full">
-      <div class="container mx-auto px-4 text-left text-white">
-        <h1 id="contact-us" class="text-3xl md:text-5xl font-bold mb-4"></h1>
-        <p class="text-xl text-gray-200 max-w-2xl mb-4">
-        We're here to help you plan your dream Sri Lankan adventure
-        </p>
-        <nav class="text-sm font-medium">
-        <a href="/" class="text-gray-200 hover:text-gray-100 underline">Home</a>
-        <span class="mx-2 text-gray-200">></span>
-        <span class="text-white">Contact Us</span>
-        </nav>
-      </div>
-      </div>
+    <section class="relative bg-cover bg-center h-[400px] mt-16" style="background-image: url('https://images.unsplash.com/photo-1528181304800-259b08848526?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent flex items-center justify-center h-full">
+            <div class="container mx-auto px-4 text-left text-white">
+                <h1 id="contact-us" class="text-3xl md:text-5xl font-bold mb-4"></h1>
+                <p class="text-xl text-gray-200 max-w-2xl mb-4">
+                    We're here to help you plan your dream Sri Lankan adventure
+                </p>
+                <nav class="text-sm font-medium">
+                    <a href="/" class="text-gray-200 hover:text-gray-100 underline">Home</a>
+                    <span class="mx-2 text-gray-200">></span>
+                    <span class="text-white">Contact Us</span>
+                </nav>
+            </div>
+        </div>
     </section>
 
     <!-- Main Content -->
     <main>
-      <!-- Contact Form Section -->
-      <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">Get in Touch</h2>
-          <form class="text-inputs">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              <div class="flex flex-col">
-                <label for="your-name" class="text-base font-medium mb-2">Your Name*</label>
-                <input type="text" name="your-name" id="your-name" class="required border border-gray-200 rounded-md p-3 text-base focus:outline-none focus:border-gray-300 focus:ring-2 focus:ring-gray-300/50" required>
-              </div>
-              <div class="flex flex-col">
-                <label for="your-email" class="text-base font-medium mb-2">Your Email*</label>
-                <input type="email" name="your-email" id="your-email" class="required border border-gray-200 rounded-md p-3 text-base focus:outline-none focus:border-gray-300 focus:ring-2 focus:ring-gray-300/50" required>
-              </div>
-              <div class="flex flex-col">
-                <label for="country" class="text-base font-medium mb-2">Country*</label>
-                <select name="country" id="country" class="required border border-gray-200 rounded-md p-3 text-base focus:outline-none focus:border-gray-300 focus:ring-2 focus:ring-gray-300/50" required>
-                  <option value="">Select</option>
-                </select>
-              </div>
-              <div class="flex flex-col relative">
-                <label for="phone" class="text-base font-medium mb-2">Phone*</label>
-                <div class="flex items-center">
-                  <span class="tour-selected-country"><img src="https://flagcdn.com/16x12/us.png" alt="United States" class="w-4 h-3 mr-2"></span>
-                  <input type="text" name="phone" id="phone" class="tour-contact-no required w-full border border-gray-200 rounded-md p-3 text-base focus:outline-none focus:border-gray-300 focus:ring-2 focus:ring-gray-300/50" required>
-                  <img src="https://jetwingtravels.com/wp-content/themes/theme-jetwing-travels/images/icons/svg-arrow-down-black.svg" alt="Down Arrow" class="country-flag-toggle w-4 absolute right-4 top-1/2 translate-y-1/2 cursor-pointer">
+        <!-- Contact Form Section -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-green-600">Get in Touch</h2>
+                <form class="text-inputs">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                        <div class="flex flex-col">
+                            <label for="your-name" class="text-base font-medium mb-2 brown-text">Your Name*</label>
+                            <input type="text" name="your-name" id="your-name" class="required border brown-border rounded-md p-3 text-base focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-300/50" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="your-email" class="text-base font-medium mb-2 brown-text">Your Email*</label>
+                            <input type="email" name="your-email" id="your-email" class="required border brown-border rounded-md p-3 text-base focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-300/50" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="country" class="text-base font-medium mb-2 brown-text">Country*</label>
+                            <select name="country" id="country" class="required border brown-border rounded-md p-3 text-base focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-300/50" required>
+                                <option value="">Select</option>
+                                <option value="Sri Lanka">Sri Lanka</option>
+                                <option value="India">India</option>
+                                <option value="United States">United States</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Germany">Germany</option>
+                                <option value="France">France</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="phone" class="text-base font-medium mb-2 brown-text">Phone*</label>
+                            <input type="text" name="phone" id="phone" class="required border brown-border rounded-md p-3 text-base focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-300/50" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="adults" class="text-base font-medium mb-2 brown-text">No of Adults*</label>
+                            <input type="number" name="adults" id="adults" min="1" class="required border brown-border rounded-md p-3 text-base focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-300/50" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="kids" class="text-base font-medium mb-2 brown-text">No of Kids (0–11 Years)*</label>
+                            <input type="number" name="kids" id="kids" min="0" class="required border brown-border rounded-md p-3 text-base focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-300/50" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="arrival-date" class="text-base font-medium mb-2 brown-text">Arrival Date*</label>
+                            <input type="date" name="arrival-date" id="arrival-date" class="required border brown-border rounded-md p-3 text-base focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-300/50" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="departure-date" class="text-base font-medium mb-2 brown-text">Departure Date*</label>
+                            <input type="date" name="departure-date" id="departure-date" class="required border brown-border rounded-md p-3 text-base focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-300/50" required>
+                        </div>
+                        <div class="flex flex-col md:col-span-2">
+                            <label for="your-message" class="text-base font-medium mb-2 brown-text">Your Message*</label>
+                            <textarea name="your-message" id="your-message" rows="5" class="required border brown-border rounded-md p-3 text-base focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-300/50" required></textarea>
+                        </div>
+                        <div class="md:col-span-2 flex items-center">
+                            <label class="text-sm brown-text">
+                                <input type="checkbox" id="policy-agree" class="required mr-2" required>
+                                I agree to the
+                                <a href="/privacy-policy" target="_blank" class="brown-text hover:text-amber-900 underline">Privacy Policy</a> and
+                                <a href="/terms-conditions" target="_blank" class="brown-text hover:text-amber-900 underline">Terms and Conditions</a>
+                            </label>
+                        </div>
+                        <div class="md:col-span-2 flex justify-center">
+                            <button type="button" class="button-green px-8 py-3 rounded-md text-lg font-semibold hover:-translate-y-0.5 transition-all duration-300">SUBMIT NOW</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Map and Our Details Section -->
+        <section class="py-16 white-bg">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                    <!-- Map -->
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-xl font-bold mb-4 text-green-600">Our Location</h3>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.902915819499!2d79.85878231477247!3d6.927079695002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593c4f2c2f2b%3A0x4e0b9e8f1f2b9e8f!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1696348800000!5m2!1sen!2slk"
+                            class="w-full h-full min-h-[400px] border brown-border rounded-md flex-1"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </div>
+                    <!-- Our Details -->
+                    <div class="flex flex-col h-full justify-between">
+                        <h3 class="text-xl font-bold mb-4 text-green-600">Our Details</h3>
+                        <!-- Card 1: Address -->
+                        <div class="bg-white rounded-md p-6 shadow-md flex flex-col items-start mb-4 flex-1 border brown-border">
+                            <h3 class="text-xl font-bold mb-4 brown-text">Address</h3>
+                            <p class="flex items-center gap-2 brown-text">
+                                <i class="fas fa-map-marker-alt green-text"></i> 123 Travel Lane, Colombo, Sri Lanka
+                            </p>
+                        </div>
+                        <!-- Card 2: Phone -->
+                        <div class="bg-white rounded-md p-6 shadow-md flex flex-col items-start mb-4 flex-1 border brown-border">
+                            <h3 class="text-xl font-bold mb-4 brown-text">Phone</h3>
+                            <p class="flex items-center gap-2 brown-text">
+                                <i class="fas fa-phone-alt green-text"></i> +94 11 234 5678
+                            </p>
+                        </div>
+                        <!-- Card 3: Email -->
+                        <div class="bg-white rounded-md p-6 shadow-md flex flex-col items-start mb-4 flex-1 border brown-border">
+                            <h3 class="text-xl font-bold mb-4 brown-text">Email</h3>
+                            <p class="flex items-center gap-2 brown-text">
+                                <i class="fas fa-envelope green-text"></i> info@taprobane.lk
+                            </p>
+                        </div>
+                        <!-- Card 4: Website -->
+                        <div class="bg-white rounded-md p-6 shadow-md flex flex-col items-start flex-1 border brown-border">
+                            <h3 class="text-xl font-bold mb-4 brown-text">Website</h3>
+                            <p class="flex items-center gap-2 brown-text">
+                                <i class="fas fa-globe green-text"></i>
+                                <a href="http://www.taprobane.lk" target="_blank" class="hover:text-amber-900 underline">www.taprobane.lk</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </section>
+
+        <section class="py-16 white-bg">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 divide-y-0 md:divide-x divide-yellow-500 gap-0">
+                    <!-- Column 1: Mobile Number -->
+                    <div class="flex flex-col items-start px-6 py-0">
+                        <h3 class="text-xl font-bold mb-4 brown-text">Mobile Number</h3>
+                        <p class="flex items-center gap-2 brown-text">
+                            <i class="fas fa-mobile-alt yellow-text"></i> +94 77 123 4567
+                        </p>
+                    </div>
+                    <!-- Column 2: Pax Number -->
+                    <div class="flex flex-col items-start px-6 py-0">
+                        <h3 class="text-xl font-bold mb-4 brown-text">Pax Number</h3>
+                        <p class="flex items-center gap-2 brown-text">
+                            <i class="fas fa-users yellow-text"></i> 10 Pax
+                        </p>
+                    </div>
+                    <!-- Column 3: Always Contact Number -->
+                    <div class="flex flex-col items-start px-6 py-0">
+                        <h3 class="text-xl font-bold mb-4 brown-text">Always Contact Number</h3>
+                        <p class="flex items-center gap-2 brown-text">
+                            <i class="fas fa-phone yellow-text"></i> +94 11 234 5678
+                        </p>
+                    </div>
                 </div>
-                <ul class="tour-contact-country hidden absolute bg-white border border-gray-200 rounded-md max-h-48 overflow-y-auto z-[1000] w-full">
-                </ul>
-              </div>
-              <div class="flex flex-col">
-                <label for="adults" class="text-base font-medium mb-2">No of Adults*</label>
-                <input type="number" name="adults" id="adults" min="1" class="required border border-gray-200 rounded-md p-3 text-base focus:outline-none focus:border-gray-300 focus:ring-2 focus:ring-gray-300/50" required>
-              </div>
-              <div class="flex flex-col">
-                <label for="kids" class="text-base font-medium mb-2">No of Kids (0–11 Years)*</label>
-                <input type="number" name="kids" id="kids" min="0" class="required border border-gray-200 rounded-md p-3 text-base focus:outline-none focus:border-gray-300 focus:ring-2 focus:ring-gray-300/50" required>
-              </div>
-              <div class="flex flex-col">
-                <label for="arrival-date" class="text-base font-medium mb-2">Arrival Date*</label>
-                <input type="date" name="arrival-date" id="arrival-date" class="required border border-gray-200 rounded-md p-3 text-base focus:outline-none focus:border-gray-300 focus:ring-2 focus:ring-gray-300/50" required>
-              </div>
-              <div class="flex flex-col">
-                <label for="departure-date" class="text-base font-medium mb-2">Departure Date*</label>
-                <input type="date" name="departure-date" id="departure-date" class="required border border-gray-200 rounded-md p-3 text-base focus:outline-none focus:border-gray-300 focus:ring-2 focus:ring-gray-300/50" required>
-              </div>
-              <div class="flex flex-col md:col-span-2">
-                <label for="your-message" class="text-base font-medium mb-2">Your Message*</label>
-                <textarea name="your-message" id="your-message" rows="5" class="required border border-gray-200 rounded-md p-3 text-base focus:outline-none focus:border-gray-300 focus:ring-2 focus:ring-gray-300/50" required></textarea>
-              </div>
-              <div class="md:col-span-2 flex items-center">
-                <label class="text-sm text-gray-400">
-                  <input type="checkbox" id="policy-agree" class="required mr-2" required>
-                  I agree to the
-                  <a href="/privacy-policy" target="_blank" class="text-gray-300 hover:text-black underline">Privacy Policy</a> and
-                  <a href="/terms-conditions" target="_blank" class="text-gray-300 hover:text-black underline">Terms and Conditions</a>
-                </label>
-              </div>
-              <div class="md:col-span-2 flex justify-center">
-                <button type="button" class="gray-button px-8 py-3 rounded-md text-lg font-semibold text-white bg-gradient-to-br from-gray-300 to-gray-400 hover:from-gray-400 hover:to-black hover:-translate-y-0.5 transition-all duration-300">SUBMIT NOW</button>
-              </div>
             </div>
-          </form>
-        </div>
-      </section>
-
-      <!-- Map and Our Details Section -->
-      <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-        <!-- Map -->
-        <div class="flex flex-col h-full">
-          <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">Our Location</h3>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.902915819499!2d79.85878231477247!3d6.927079695002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593c4f2c2f2b%3A0x4e0b9e8f1f2b9e8f!2sColombo%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1696348800000!5m2!1sen!2slk"
-            class="w-full h-full min-h-[400px] border border-gray-200 rounded-md flex-1"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </div>
-        <!-- Our Details -->
-        <div class="flex flex-col h-full justify-between">
-          <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">Our Details</h3>
-          <!-- Card 1: Address -->
-          <div class="bg-white rounded-md p-6 shadow-md flex flex-col items-start mb-4 flex-1">
-            <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">Address</h3>
-            <p class="flex items-center gap-2 text-gray-400">
-          <i class="fas fa-map-marker-alt"></i> 123 Travel Lane, Colombo, Sri Lanka
-            </p>
-          </div>
-          <!-- Card 2: Phone -->
-          <div class="bg-white rounded-md p-6 shadow-md flex flex-col items-start mb-4 flex-1">
-            <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">Phone</h3>
-            <p class="flex items-center gap-2 text-gray-400">
-          <i class="fas fa-phone-alt"></i> +94 11 234 5678
-            </p>
-          </div>
-          <!-- Card 3: Email -->
-          <div class="bg-white rounded-md p-6 shadow-md flex flex-col items-start mb-4 flex-1">
-            <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">Email</h3>
-            <p class="flex items-center gap-2 text-gray-400">
-          <i class="fas fa-envelope"></i> info@taprobane.lk
-            </p>
-          </div>
-          <!-- Card 4: Website -->
-          <div class="bg-white rounded-md p-6 shadow-md flex flex-col items-start flex-1">
-            <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">Website</h3>
-            <p class="flex items-center gap-2 text-gray-400">
-          <i class="fas fa-globe"></i>
-          <a href="http://www.taprobane.lk" target="_blank" class="hover:text-black underline">www.taprobane.lk</a>
-            </p>
-          </div>
-        </div>
-          </div>  
-        </div>
-      </section>
-
-      <section class="py-16 ">
-        <div class="container mx-auto px-4">
-          <div class="grid grid-cols-1 md:grid-cols-3 divide-y-0 md:divide-x divide-gray-300 gap-0">
-            <!-- Column 1: Mobile Number -->
-            <div class="flex flex-col items-start px-6 py-0">
-              <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">Mobile Number</h3>
-              <p class="flex items-center gap-2 text-gray-400">
-                <i class="fas fa-mobile-alt"></i> +94 77 123 4567
-              </p>
-            </div>
-            <!-- Column 2: Pax Number -->
-            <div class="flex flex-col items-start px-6 py-0">
-              <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">Pax Number</h3>
-              <p class="flex items-center gap-2 text-gray-400">
-                <i class="fas fa-users"></i> 10 Pax
-              </p>
-            </div>
-            <!-- Column 3: Always Contact Number -->
-            <div class="flex flex-col items-start px-6 py-0">
-              <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-gray-400 to-gray-300 bg-clip-text text-transparent">Always Contact Number</h3>
-              <p class="flex items-center gap-2 text-gray-400">
-                <i class="fas fa-phone"></i> +94 11 234 5678
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
     </main>
 
     <!-- Footer Section -->
     <footer class="bg-black text-white py-8">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 class="text-xl font-bold mb-4">About Us</h3>
-            <p class="text-gray-200">
-              TAPROBANE DIARIES is your trusted partner in exploring the wonders of Sri Lanka. From breathtaking landscapes to rich cultural heritage, we craft unforgettable journeys.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-            <ul class="space-y-2">
-              <li><a href="/" class="text-gray-200 hover:text-white">Home</a></li>
-              <li><a href="/about" class="text-gray-200 hover:text-white">About</a></li>
-              <li><a href="/tours" class="text-gray-200 hover:text-white">Tours</a></li>
-              <li><a href="/contact" class="text-gray-200 hover:text-white">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-4">Contact Info</h3>
-            <ul class="space-y-2 text-gray-200">
-              <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt"></i>123 Travel Lane, Colombo, Sri Lanka</li>
-              <li class="flex items-center gap-2"><i class="fas fa-phone-alt"></i>+94 11 234 5678</li>
-              <li class="flex items-center gap-2"><i class="fas fa-envelope"></i>info@taprobane.lk</li>
-            </ul>
-          </div>
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">About Us</h3>
+                    <p class="text-gray-200">
+                        TAPROBANE DIARIES is your trusted partner in exploring the wonders of Sri Lanka. From breathtaking landscapes to rich cultural heritage, we craft unforgettable journeys.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-200 hover:text-white">Home</a></li>
+                        <li><a href="/about" class="text-gray-200 hover:text-white">About</a></li>
+                        <li><a href="/tours" class="text-gray-200 hover:text-white">Tours</a></li>
+                        <li><a href="/contact" class="text-gray-200 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-200">
+                        <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt yellow-text"></i>123 Travel Lane, Colombo, Sri Lanka</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-phone-alt yellow-text"></i>+94 11 234 5678</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-envelope yellow-text"></i>info@taprobane.lk</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-gray-200">
+                <p>&copy; 2025 TAPROBANE DIARIES. All rights reserved.</p>
+            </div>
         </div>
-        <div class="mt-8 text-center text-gray-200">
-          <p>&copy; 2025 TAPROBANE DIARIES. All rights reserved.</p>
-        </div>
-      </div>
     </footer>
 
     <script>
-      $(document).ready(function () {
-        // Typed.js for hero section
-        var typed = new Typed('#contact-us', {
-          strings: ['Contact Us', 'Reach Out Today', 'Plan Your Adventure'],
-          typeSpeed: 50,
-          backSpeed: 25,
-          loop: true,
+        $(document).ready(function () {
+            // Typed.js for hero section
+            var typed = new Typed('#contact-us', {
+                strings: ['Contact Us', 'Reach Out Today', 'Plan Your Adventure'],
+                typeSpeed: 50,
+                backSpeed: 25,
+                loop: true,
+            });
+
+            // Form validation
+            $('.button-green').on('click', function () {
+                let isValid = true;
+                $('.required').each(function () {
+                    if ($(this).is(':checkbox')) {
+                        if (!$(this).is(':checked')) {
+                            isValid = false;
+                            $(this).parent().addClass('text-red-500').removeClass('brown-text');
+                        } else {
+                            $(this).parent().addClass('brown-text').removeClass('text-red-500');
+                        }
+                    } else if (!$(this).val()) {
+                        isValid = false;
+                        $(this).addClass('border-red-500').removeClass('yellow-border');
+                    } else {
+                        $(this).addClass('yellow-border').removeClass('border-red-500');
+                    }
+                });
+
+                const adults = parseInt($('#adults').val());
+                const kids = parseInt($('#kids').val());
+                if (isNaN(adults) || adults < 1) {
+                    isValid = false;
+                    $('#adults').addClass('border-red-500').removeClass('yellow-border');
+                }
+                if (isNaN(kids) || kids < 0) {
+                    isValid = false;
+                    $('#kids').addClass('border-red-500').removeClass('yellow-border');
+                }
+
+                const arrivalDate = new Date($('#arrival-date').val());
+                const departureDate = new Date($('#departure-date').val());
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                if (arrivalDate < today) {
+                    isValid = false;
+                    $('#arrival-date').addClass('border-red-500').removeClass('yellow-border');
+                }
+                if (departureDate <= arrivalDate) {
+                    isValid = false;
+                    $('#departure-date').addClass('border-red-500').removeClass('yellow-border');
+                }
+
+                if (isValid) {
+                    alert('Form submitted successfully!');
+                    // Add actual form submission logic here (e.g., AJAX)
+                } else {
+                    alert('Please fill in all required fields correctly and agree to the Privacy Policy and Terms and Conditions.');
+                }
+            });
         });
-
-        // Mobile menu toggle
-        $('#menu-toggle, .mobile-menu-close').on('click', function () {
-          $('#mobile-menu-sidebar').toggleClass('translate-x-0');
-          $('#mobile-menu-overlay').toggleClass('hidden');
-          $('#menu-toggle').toggleClass('active');
-          $('#menu-toggle .hamburger-line:nth-child(1)').toggleClass('rotate-45 translate-x-1.5 translate-y-1.5');
-          $('#menu-toggle .hamburger-line:nth-child(2)').toggleClass('opacity-0');
-          $('#menu-toggle .hamburger-line:nth-child(3)').toggleClass('-rotate-45 translate-x-2 -translate-y-2');
-        });
-
-        // Load country data from JSON
-        $.getJSON('countries.json', function (countries) {
-          console.log('Countries loaded:', countries);
-          const $countrySelect = $('#country');
-          countries.forEach(country => {
-            $countrySelect.append(`<option value="${country.name}">${country.name}</option>`);
-          });
-
-          const $phoneDropdown = $('.tour-contact-country');
-          countries.forEach(country => {
-            $phoneDropdown.append(
-              `<li data-code="${country.phoneCode}" data-country="${country.code}" class="p-2 cursor-pointer flex items-center gap-2 hover:bg-gray-100">
-                <img src="${country.flagUrl}" alt="${country.name}" class="w-4 h-3">
-                <span>(${country.phoneCode})</span>
-              </li>`
-            );
-          });
-
-          $('.country-flag-toggle').on('click', function () {
-            $('.tour-contact-country').toggleClass('hidden');
-          });
-
-          $('.tour-contact-country li').on('click', function () {
-            const code = $(this).data('code');
-            const countryCode = $(this).data('country');
-            const flagUrl = $(this).find('img').attr('src');
-            $('.tour-selected-country').html(`<img src="${flagUrl}" alt="${countryCode}" class="w-4 h-3 mr-2">`);
-            $('#phone').val(code + ' ');
-            $('.tour-contact-country').addClass('hidden');
-          });
-
-          $(document).on('click', function (e) {
-            if (!$(e.target).closest('.flex.items-center').length) {
-              $('.tour-contact-country').addClass('hidden');
-            }
-          });
-
-          $('#phone').on('input', function () {
-            const phoneNumber = $(this).val();
-            try {
-              const parsedNumber = libphonenumber.parsePhoneNumberFromString(phoneNumber);
-              if (!parsedNumber || !parsedNumber.isValid()) {
-                $(this).addClass('border-red-500').removeClass('border-gray-200');
-              } else {
-                $(this).addClass('border-gray-200').removeClass('border-red-500');
-              }
-            } catch (e) {
-              $(this).addClass('border-red-500').removeClass('border-gray-200');
-            }
-          });
-        }).fail(function (jqxhr, textStatus, error) {
-          console.error('Error loading countries.json:', textStatus, error);
-          alert('Failed to load country data. Please check the console for details.');
-        });
-
-        $('.gray-button').on('click', function () {
-          let isValid = true;
-          $('.required').each(function () {
-            if ($(this).is(':checkbox')) {
-              if (!$(this).is(':checked')) {
-                isValid = false;
-                $(this).parent().addClass('text-red-500').removeClass('text-gray-400');
-              } else {
-                $(this).parent().addClass('text-gray-400').removeClass('text-red-500');
-              }
-            } else if (!$(this).val()) {
-              isValid = false;
-              $(this).addClass('border-red-500').removeClass('border-gray-200');
-            } else {
-              $(this).addClass('border-gray-200').removeClass('border-red-500');
-            }
-          });
-
-          const adults = parseInt($('#adults').val());
-          const kids = parseInt($('#kids').val());
-          const infants = parseInt($('#infants').val());
-          if (isNaN(adults) || adults < 1) {
-            isValid = false;
-            $('#adults').addClass('border-red-500').removeClass('border-gray-200');
-          }
-          if (isNaN(kids) || kids < 0) {
-            isValid = false;
-            $('#kids').addClass('border-red-500').removeClass('border-gray-200');
-          }
-          if (isNaN(infants) || infants < 0) {
-            isValid = false;
-            $('#infants').addClass('border-red-500').removeClass('border-gray-200');
-          }
-
-          const arrivalDate = new Date($('#arrival-date').val());
-          const departureDate = new Date($('#departure-date').val());
-          const today = new Date();
-          today.setHours(0, 0, 0, 0);
-          if (arrivalDate < today) {
-            isValid = false;
-            $('#arrival-date').addClass('border-red-500').removeClass('border-gray-200');
-          }
-          if (departureDate <= arrivalDate) {
-            isValid = false;
-            $('#departure-date').addClass('border-red-500').removeClass('border-gray-200');
-          }
-
-          if (isValid) {
-            alert('Form submitted successfully!');
-            // Add actual form submission logic here (e.g., AJAX)
-          } else {
-            alert('Please fill in all required fields correctly and agree to the Privacy Policy and Terms and Conditions.');
-          }
-        });
-      });
     </script>
-  </body>
+</body>
 </html>
